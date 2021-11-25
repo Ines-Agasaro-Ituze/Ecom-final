@@ -146,8 +146,9 @@ class cart extends Connection
         return $this->fetchOne($sql);
     }
     //function to get orderdetails 
-    public function getOrderDetails($ord_id){
-        $sql = "SELECT `products`.`product_title`, 	`products`.`product_price`, `orderdetails`.`qty`, `orderdetails`.`qty`*`products`.`product_price` as result FROM `orderdetails` JOIN `products` ON (`orderdetails`.`product_id` = `products`.`product_id`) WHERE `order_id`='$ord_id'";
+    public function getOrderDetails($order_id){
+       $sql= "SELECT * FROM `orderdetails` inner join products on orderdetails.product_id = products.product_id  where orderdetails.order_id= $order_id";
+        // $sql = "SELECT `products`.`product_title`, 	`products`.`product_price`, `orderdetails`.`qty`, `orderdetails`.`qty`*`products`.`product_price` as result FROM `orderdetails` JOIN `products` ON (`orderdetails`.`product_id` = `products`.`product_id`) WHERE `order_id`='$ord_id'";
         return $this->fetch($sql);
     }
 

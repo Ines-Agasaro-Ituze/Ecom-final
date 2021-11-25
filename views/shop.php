@@ -37,7 +37,7 @@
               </form>
             </div>
             
-        
+            <div class="row multi-columns-row">
             <?php
               require('../controllers/product_controller.php');
               require('../controllers/cart_controller.php');
@@ -45,6 +45,7 @@
            
               $products=select_all_products_controller();
               
+            
               $ipadd=getRealIpAddr();
               if(isset($_SESSION['user_id'])) {
                 $cid=$_SESSION['user_id'];
@@ -52,26 +53,33 @@
               else{$cid=null;}
               
               $qty=1;
+
+              $limit = 16;
+              $num_products=count($products);
+              $pages=ceil($num_products/$limit);
+            
               foreach ($products as $product){
                 $id=$product['product_id'];
 
             ?>
             
 
-            <div class="row multi-columns-row">
+            
               <div class="col-sm-6 col-md-3 col-lg-3">
                 <div class="shop-item">
-                  <div class="shop-item-image"><img src=<?php echo $product['product_image'];?> alt="Accessories Pack"/>
+                  <div class="shop-item-image"><img src=<?php echo $product['product_image'];?> />
                     <div class="shop-item-detail"><a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a></div>
                   </div>
                   <h4 class="shop-item-title font-alt"><a href="single_product.php?id=<?= $id;?>" ><?= $product['product_title']?></a></h4><?= $product['product_price']?>
                 </div>
               </div>
+              
               <?php }; ?>
+              </div>
             
               
-          
-            </div>
+              
+            
             <div class="row mt-30">
               <div class="col-sm-12 align-center"><a class="btn btn-b btn-round" href="#">See all products</a></div>
             </div>

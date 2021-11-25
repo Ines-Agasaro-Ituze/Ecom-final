@@ -11,31 +11,34 @@ include('../views/menu.php');
     <div class="container">
     <section class="module">
 
-        <h1>Order Details</h1>
+        <h1>Orders</h1>
       
-        <table class="table table-striped table-border checkout-table">
+        <table class="table">
           <thead>
               <tr>
-                  <th> Product </th>
-                  <th> Product Title</th>
-                  <th> Quantity</th>
+                  <th> Order ID</th>
+                  <th> Invoice no</th>
+                  <th> Order date</th>
+                  <th> Order status</th>
 
+          <th></th>
+          <th></th>
               </tr>
           </thead>
 
           <tbody>
         <?php
-              $order_id=$_GET['orderID'];
-              $orderdetails=getOrderDetails_controller($order_id);
-              if(!empty($orderdetails)){
-                  foreach($orderdetails as $x){
+              $orders=orders_controller();
+              if(!empty($orders)){
+                  foreach($orders as $x){
                       echo 
                       "
                       <tr>
-                          <td class='hidden-xs'><img src={$x['product_image']} alt='Accessories Pack' /></td>
-                          <td>{$x['product_title']}</td>
-                          <td>{$x['qty']}</td>
-                          
+                          <td>{$x['customer_name']}</td>
+                          <td>{$x['invoice_no']}</td>
+                          <td>{$x['order_date']}</td>
+                          <td>{$x['order_status']}</td>
+                          <td><a style ='color: blue;' href='orderdetails.php?orderID={$x['order_id']}'>View</a></td>
                       </tr>
                       ";
                   }

@@ -11,8 +11,8 @@ if(isset($_POST['addbrand'])){
     // call the add_brand_controller function: return true or false
     $result = add_brand_controller($name);
 
-    if($result === true) echo "Insertion Successful";
-    else echo "Insertion Failed";
+    if($result === true) echo"Brand Added Successfully";
+    else echo "Failed to add brand";
 
     
 

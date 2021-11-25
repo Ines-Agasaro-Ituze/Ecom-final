@@ -54,7 +54,7 @@
     <link href="../assets/css/style.css" rel="stylesheet">
     <link id="color-scheme" href="../assets/css/colors/default.css" rel="stylesheet">
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
   </head>
   <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
     <main>

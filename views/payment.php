@@ -5,7 +5,7 @@
 // }
 include_once('menu.php');
 require('../controllers/cart_controller.php'); ?>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="main">
     
   <section class="module">
@@ -22,13 +22,12 @@ require('../controllers/cart_controller.php'); ?>
           <form id="paymentForm" >
               <div class="form-group">
                   <label for="email">Email Address</label>
-                  <input type="email" id="email-address" value= <?=$_SESSION['user-email']?>required/>
+                  <input type="email" id="email-address" value= "<?=$_SESSION['user-email']?>" required/>
               </div>
               <div class="form-group">
               <label for="amount">Amount</label>
-			        <!-- <input type="number" id="amount" name="amount" value= <?= $_GET['amount'] ?> required disabled/>  -->
-              <input type="tel" id="amount" required />
-                  
+			        <input type="number" id="amount" name="amount" value= <?= $_GET['amount'] ?> required disabled/> 
+              
               </div>
               <div class="form-submit">
                   <button type="button" onclick="payWithPaystack()"> pay </button>
