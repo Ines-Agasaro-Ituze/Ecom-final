@@ -1,8 +1,11 @@
 
-<?php 
-// if(!isset($_SESSION['user_id'])){
-//   header('location:../login/login.php');
-// }
+<?php
+session_start(); 
+if(!isset($_SESSION['user_id'])){
+  $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
+  header('location:../login/login.php');
+}
+
 include_once('menu.php');
 require('../controllers/cart_controller.php'); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -15,6 +18,7 @@ require('../controllers/cart_controller.php'); ?>
           <h1 class="module-title font-alt">Confirm your order</h1>
         </div>
       </div>
+     
       <hr class="divider-w pt-20">
       <div class="row">
         <div class="col-sm-12">

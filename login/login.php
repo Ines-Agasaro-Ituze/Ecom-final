@@ -14,7 +14,6 @@
 <body>
 
 	<h1>Login</h1>
-
 	<div class="container">
 
 		<form method="post" id='form' action="loginprocess.php">

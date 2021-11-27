@@ -1,6 +1,8 @@
 <?php 
 require("../controllers/cart_controller.php");
-include_once('menu.php'); ?>
+include_once('menu.php');
+ 
+?>
       <div class="main">
           
         <section class="module">
@@ -10,6 +12,7 @@ include_once('menu.php'); ?>
                 <h1 class="module-title font-alt">Checkout</h1>
               </div>
             </div>
+            <?php var_dump($_SESSION['page']);?>
             <hr class="divider-w pt-20">
             <div class="row">
               <div class="col-sm-12">

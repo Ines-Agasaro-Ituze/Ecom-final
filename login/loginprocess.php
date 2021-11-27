@@ -23,7 +23,13 @@ if (isset($_POST['login'])) {
                 header("Location: ../admin/dashboard.php");
             }
             else{
-                header("Location: ../index.php");
+                if(!isset($_SESSION['current_page'])){
+                    header("Location: ../index.php");
+                }
+                else{
+                    header("Location: ". $_SESSION['current_page']);
+                }
+                
             }
             
         }
