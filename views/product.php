@@ -1,30 +1,9 @@
 <?php 
 require('../controllers/product_controller.php');
 require('../controllers/cart_controller.php');
-include('menu.php');?>
-<section class="home-section home-fade home-full-height" id="home">
-        <div class="hero-slider">
-          <ul class="slides">
-            <li class="bg-dark-30 bg-dark shop-page-header" style="background-image:url(&quot;assets/images/shop/slider1.png&quot;);">
-              <div class="titan-caption">
-                <div class="caption-content">
-                  <div class="font-alt mb-30 titan-title-size-1">This is Artopia</div>
-                  <div class="font-alt mb-30 titan-title-size-3"> Customized Cosmetics and Jewellery</div>
-                  <div class="font-alt mb-40 titan-title-size-1">Your online Beauty Stop</div><a class="section-scroll btn btn-border-w btn-round" href="#latest">Learn More</a>
-                </div>
-              </div>
-            </li>
-            <li class="bg-dark-30 bg-dark shop-page-header" style="background-image:url(&quot;assets/images/shop/slider3.png&quot;);">
-              <div class="titan-caption">
-                <div class="caption-content">
-                  <div class="font-alt mb-30 titan-title-size-1"> This is Artopia</div>
-                  <div class="font-alt mb-40 titan-title-size-3">Exclusive products</div><a class="section-scroll btn btn-border-w btn-round" href="#latest">Learn More</a>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
+include('menu.php');
+?>
+
 <div class="main">
           
         <section class="module-small">
@@ -42,7 +21,8 @@ include('menu.php');?>
             
             <div class="row multi-columns-row">
             <?php
-              $products=select_all_products_controller();
+                $cat=$_GET['cat'];
+              $products=select_by_category_controller($cat);
               
             
               $ipadd=getRealIpAddr();

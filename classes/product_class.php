@@ -53,9 +53,9 @@ class Product extends Connection{
 		return $this->fetchOne("select * from products where product_id='$id'");
 	}
 	// selecting a product by its brand
-	function select_by_brand($cat){
+	function select_by_category($cat){
 		// return associative array or false
-		return $this->fetch("select * from products where product_cat='$brand'");
+		return $this->fetch("select * from products where product_cat='$cat'");
 	}
     function  add_brand($name){
 		// return true or false
