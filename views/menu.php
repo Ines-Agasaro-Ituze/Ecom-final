@@ -75,7 +75,7 @@
                 $brands=displayBrands_controller();
                 foreach($brands as $brand){
                 ?>
-                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"> $brand['brand_name']</a>    
+                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"> <?=$brand['brand_name']?></a>    
                 <ul class="dropdown-menu">
                       <li><a href="#">Hair care</a></li>
                       <li><a href="#">Lip Care</a></li>
