@@ -1,12 +1,13 @@
 
 
 <?php
+require("../controllers/product_controller.php");
 require("../controllers/cart_controller.php");
-include('../views/menu.php');
+include('navbar.php');
 ?>
 
 
-  <body>
+
     <div class=main>
     <div class="container">
     <section class="module">
@@ -61,7 +62,7 @@ include('../views/menu.php');
     </section>
 
   
-  </body>
+  
   <?php include('../views/footer.php');?>
 
 

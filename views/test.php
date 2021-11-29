@@ -1,7 +1,16 @@
-<?php
 
-require_once('../controllers/product_controller.php');
 
+<?php require_once('../controllers/product_controller.php')
+require_once('../controllers/cart_controller.php');
+session_start();
+if(!isset($_SESSION['user_id'])){
+    $ipadd=getRealIpAddr();
+    cartValue_controller($cid)
+    cartValueNull_controller($ipadd)
+}
+?>
+
+<div class= "container">
 <li class="onhover-div mobile-cart">
 <div><img src="../assets/images/icon/cart.png"
         class="img-fluid blur-up lazyload" alt=""> <i
@@ -38,4 +47,4 @@ require_once('../controllers/product_controller.php');
         <div class="buttons"><a href="cart.php" class="view-cart">view
                 cart</a> <a href="checkout.php" class="checkout">checkout</a></div>
     </li>
-?>
+</div>

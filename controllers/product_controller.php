@@ -68,6 +68,7 @@ function select_by_category_controller($cat){
     $product_instance = new Product();
     return $product_instance->select_by_category($cat);
 }
+
 function  add_brand_controller($name){
     // create an instance of the product class
     $product_instance = new Product();

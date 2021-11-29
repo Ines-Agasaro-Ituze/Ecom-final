@@ -1,7 +1,8 @@
-<?php 
-require("../controllers/cart_controller.php");
-include_once('menu.php');
- 
+<?php
+
+require('../controllers/product_controller.php');
+require('../controllers/cart_controller.php');
+include('menu.php');
 ?>
       <div class="main">
           
@@ -12,7 +13,7 @@ include_once('menu.php');
                 <h1 class="module-title font-alt">Checkout</h1>
               </div>
             </div>
-            <?php var_dump($_SESSION['page']);?>
+          
             <hr class="divider-w pt-20">
             <div class="row">
               <div class="col-sm-12">
@@ -56,7 +57,9 @@ include_once('menu.php');
                       <td>
                         <form>
                          
-                          <input class="form-control" type="number" class="form-control" min=1 id="qty" name="qty" data-cid="<?= $item['c_id'];?>" data-ipadd="<?= $item['ip_add'];?>" data-pid="<?= $item['p_id'];?>" data-qty="<?= $item['qty'];?>" value="<?php echo $item['qty']  ?>" 
+                          <input class="form-control" type="number" class="form-control" min=1 id="qty" 
+                          name="qty" data-cid="<?= $item['c_id'];?>" data-ipadd="<?= $item['ip_add'];?>" 
+                          data-pid="<?= $item['p_id'];?>" data-qty="<?= $item['qty'];?>" value="<?php echo $item['qty']  ?>" 
                           onchange="updatecart(this)" onkeyup="updatecart(this)">
                         </form>
                       </td>

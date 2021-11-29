@@ -60,18 +60,16 @@
   </head>
   <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
     <main>
-      <div class="page-loader">
-        <div class="loader">Loading...</div>
-      </div>
-      <nav class="navbar navbar-custom navbar-fixed-top " role="navigation">
-        <div class="container">
+      
+      <div class="page-sidebar" >
+        <div class="main-header-left d-none d-lg-block">
           <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="#">Artopia</a>
           </div>
-          <div class="collapse navbar-collapse" id="custom-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li ><a  href="./shop.php" >Home</a>
-                <li class= "dropdown"><a  class="dropdown-toggle" href="./shop.php" >Shop</a>
+          <div class="sidebar custom-scrollbar" >
+            <ul class="sidebar-menu">
+                <li ><a  class="sidebar-header" href="./shop.php" >Home</a>
+                <li ><a  class= "sidebar-header" href="./shop.php" >Shop</a>
                 <ul class="dropdown-menu">
                 <?php 
                 $categories=displaycategories_controller();
@@ -84,25 +82,23 @@
                 <?php }?>
                 </ul>
                 </li>
-
-                <li><a  href="cart.php" >Cart(<i class="fa-shopping-cart"></i>)</a> </li>
               <?php
               if(!isset($_SESSION['user_id'])){
               ?>
                 <li class="onhover-div mobile-cart"> <div><img src= ""></div></li>
-                <li ><a  href="../login/login.php" >Login</a></li>
+                <li ><a class="sidebar-header" href="../login/login.php" >Login</a></li>
                 <li ><a  href="../login/register.php" >Register</a></li>
                 
                 
               
              <?php } else {?>
-             <li><a  href="../login/logout.php" >Logout</a></li>
+             <li><a  class="sidebar-header" href="../login/logout.php" >Logout</a></li>
              <?php if( ($_SESSION['user_role']) == 0){
                
                ?>
-                <li ><a  href="../login/login.php" >Categories</a></li>
-                <li ><a  href="../login/register.php" >Brands</a></li>
-                <li ><a  href="../login/login.php" >Products</a></li>
+                <li ><a  class="sidebar-header" href="../login/login.php" >Categories</a></li>
+                <li ><a class="sidebar-header"  href="../login/register.php" >Brands</a></li>
+                <li ><a  class="sidebar-header" href="../login/login.php" >Products</a></li>
                 
              
              <?php }} ?>
@@ -111,5 +107,5 @@
 
           </div>
         </div>
-      </nav>
+    </div>
     
