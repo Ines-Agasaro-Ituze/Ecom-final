@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php session_start();?>
+    <?php session_start();
+    require('../controllers/product_controller.php');?>
     <!--  
     Document Title
     =============================================
@@ -70,20 +71,19 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ><a  href="./shop.php" >Home</a>
                 <li ><a  href="./shop.php" >Shop</a></li>
-                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Beauty Shop</a>
-                    <ul class="dropdown-menu">
+                <?php 
+                $brands=displayBrands_controller();
+                foreach($brands as $brand){
+                ?>
+                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"> $brand['brand_name']</a>    
+                <ul class="dropdown-menu">
                       <li><a href="#">Hair care</a></li>
                       <li><a href="#">Lip Care</a></li>
                       <li><a href="#">Spa Care</a></li>
                     </ul>
                 </li>
-                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Jewellery</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Necklace</a></li>
-                      <li><a href="#">Bracelets</a></li>
-                      <li><a href="#">Rings</a></li>
-                    </ul>
-                </li>
+                <?php }?>
+            
                 <li><a  href="cart.php" >Cart(<i class="fa-shopping-cart"></i>)</a> </li>
               <?php
               if(!isset($_SESSION['user_id'])){

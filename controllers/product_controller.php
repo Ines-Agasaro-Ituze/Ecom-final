@@ -63,7 +63,11 @@ function select_one_product_controller($id){
     $product_instance = new Product();
     return $product_instance->select_one_product($id);
 }
-
+// selecting a product by its brand
+function select_by_category_controller($brand){
+    $product_instance = new Product();
+    return $product_instance$->select_by_category($brand)
+}
 function  add_brand_controller($name){
     // create an instance of the product class
     $product_instance = new Product();

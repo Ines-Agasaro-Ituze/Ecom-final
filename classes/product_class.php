@@ -4,7 +4,7 @@ require('../settings/connection.php');
 
 // inherit the methods from Connection
 class Product extends Connection{
-
+	//adding a product
 	function add_category($cat_name){
 		// return true or false
 		return $this->query("insert into categories (cat_name) values('$cat_name')");
@@ -51,6 +51,11 @@ class Product extends Connection{
 	function select_one_product($id){
 		// return associative array or false
 		return $this->fetchOne("select * from products where product_id='$id'");
+	}
+	// selecting a product by its brand
+	function select_by_brand($cat){
+		// return associative array or false
+		return $this->fetch("select * from products where product_cat='$brand'");
 	}
     function  add_brand($name){
 		// return true or false
