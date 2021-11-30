@@ -5,9 +5,10 @@ if(!isset($_SESSION['user_id'])){
   $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
   header('location:../login/login.php');
 }
-
+require('../controllers/product_controller.php');
 include_once('menu.php');
-require('../controllers/cart_controller.php'); ?>
+require('../controllers/cart_controller.php');
+ ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="main">
     

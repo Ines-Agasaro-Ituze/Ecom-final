@@ -1,7 +1,10 @@
+
 <?php 
 require('../controllers/product_controller.php');
 require('../controllers/cart_controller.php');
-include('menu.php');?>
+include('menu.php');
+?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <section class="home-section home-fade home-full-height" id="home">
         <div class="hero-slider">
           <ul class="slides">
@@ -63,13 +66,16 @@ include('menu.php');?>
             ?>
             
 
-            
-              <div class="col-sm-6 col-md-3 col-lg-3">
+              <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="shop-item">
                   <div class="shop-item-image"><img src=<?php echo $product['product_image'];?> />
-                    <div class="shop-item-detail"><a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a></div>
+                    <div class="shop-item-detail">
+                      <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket"></span></a>
+                      <a class="btn btn-round btn-b" href="single_product.php?id=<?= $id;?>" ><i class="far fa-eye"></i></a>
+                    </div>
+                    
                   </div>
-                  <h4 class="shop-item-title font-alt"><a href="single_product.php?id=<?= $id;?>" ><?= $product['product_title']?></a></h4><?= $product['product_price']?>
+                  <h4 class="shop-item-title font-alt"><a href="single_product.php?id=<?= $id;?>" ><?= $product['product_title']?></a></h4> <?= $product['product_price']?>
                 </div>
               </div>
               

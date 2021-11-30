@@ -106,6 +106,11 @@ require_once("../classes/cart_class.php");
         $cart= new cart();
         return $cart->cartValueNull($ipadd);
     }
+     //function to add to customized orders
+     function addCustomization_controller($cid, $inv_no, $ord_date, $ord_stat, $file, $desc){
+        $cart=new cart();
+        return $cart->addCustomization($cid, $inv_no, $ord_date, $ord_stat, $file, $desc);
+    }
     //function to add to orders
     function addOrder_controller($cid, $inv_no, $ord_date, $ord_stat){
         $cart=new cart();

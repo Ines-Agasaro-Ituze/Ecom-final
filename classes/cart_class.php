@@ -107,7 +107,11 @@ class cart extends Connection
 
         return $this->fetchOne($sql);
     }
-
+    //function to add to customized orders
+    public function addCustomization($cid, $inv_no, $ord_date, $ord_stat, $file, $desc){
+        $sql = "INSERT INTO `orders`(`customer_id`, `invoice_no`, `order_date`, `order_status`, `order_desc`, `order_file`) VALUES ('$cid','$inv_no','$ord_date','$ord_stat', '$desc', '$file')";
+        return $this->query($sql);
+    }
     //function to add to orders
     public function addOrder($cid, $inv_no, $ord_date, $ord_stat){
         $sql = "INSERT INTO `orders`(`customer_id`, `invoice_no`, `order_date`, `order_status`) VALUES ('$cid','$inv_no','$ord_date','$ord_stat')";

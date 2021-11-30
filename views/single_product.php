@@ -37,6 +37,7 @@ include_once('menu.php');?>
                     <div class="price font-alt"><span class="amount"><?= $product['product_price']; ?></span></div>
                   </div>
                 </div>
+
                 <div class="row mb-20">
                   <div class="col-sm-12">
                     <div class="description">
@@ -44,64 +45,70 @@ include_once('menu.php');?>
                     </div>
                   </div>
                 </div>
-
-             
+              
                 <div class="row mb-20">
-                  <!-- <div class="col-sm-4 mb-sm-20">
-                    <input class="form-control input-lg" type="number" name="qty" value="1" max="40" min="1" required="required"/>
-                  </div> -->
-                  <div class="col-sm-8">
-                    
-                    <a class="btn btn-lg btn-block btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>">Add To Cart</a></div>
-                </div>
-                         
-              </div>
-           
+                 
+                 <div class="col-sm-8">
+                   
+                   <a class="btn btn-lg btn-block btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>">Add To Cart</a></div>
+               </div>
+                        
             </div>
-                    <!-- <div class="comment-form mt-30">
-                      <h4 class="comment-form-title font-alt">Add review</h4>
-                      <form method="post">
-                        <div class="row">
-                          <div class="col-sm-4">
-                            <div class="form-group">
-                              <label class="sr-only" for="name">Name</label>
-                              <input class="form-control" id="name" type="text" name="name" placeholder="Name"/>
-                            </div>
-                          </div>
-                          <div class="col-sm-4">
-                            <div class="form-group">
-                              <label class="sr-only" for="email">Name</label>
-                              <input class="form-control" id="email" type="text" name="email" placeholder="E-mail"/>
-                            </div>
-                          </div>
-                          <div class="col-sm-4">
-                            <div class="form-group">
-                              <select class="form-control">
-                                <option selected="true" disabled="">Rating</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-sm-12">
-                            <div class="form-group">
-                              <textarea class="form-control" id="" name="" rows="4" placeholder="Review"></textarea>
-                            </div>
-                          </div>
-                          <div class="col-sm-12">
-                            <button class="btn btn-round btn-d" type="submit">Submit Review</button>
-                          </div>
-                        </div>
-                      </form>
+              
+            </section>
+      
+            <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">Place An Exclusive Order</h2>
+                <div class="module-subtitle font-serif">Personalize this product, to fit your taste. Our team will get back to you within 24 hours!</div>
+            </div>
+            
+            <section>
+            <div class="comment-form mb-20" style= "padding-left: 10% ; padding-right: 10%">
+              <!-- <h4 class="comment-form-title font-alt">Personalize Product</h4> -->
+              <form method="post">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label  for="tel">Phone Number *</label>
+                      <input class="form-control" id="tel" type="tel" name="tel" placeholder="Phone Number"/>
                     </div>
                   </div>
-                </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label  for="name">Your Name *</label>
+                      <input class="form-control" id="name" type="text" name="name" placeholder="Your Name"/>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label  for="email">Your Email *</label>
+                      <input class="form-control" id="email" type="text" name="email" placeholder="E-mail"/>
+                    </div>
+                  </div>
+                
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label  for="desc">Describe how you want to personalize this order. Be it Packaging, color, shape!</label>
+                      <textarea class="form-control" id="desc" name="desc" rows="4" placeholder="Your wish is Our Command"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label  for="desc">Capture your order in a picture</label>
+                      <input class="form-control" id="file" name="file" />
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <button class="btn btn-round btn-d" type="submit">Place Your Order</button>
+                  </div>
+                  </div>
+                </form>
               </div>
             </div>
-          </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
         </section>
         <hr class="divider-w">
         <section class="module-small">

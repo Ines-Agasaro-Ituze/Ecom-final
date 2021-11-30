@@ -71,7 +71,7 @@
             
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.php" class="nav-link">
+                <a href="./index.php" class="nav-link active">
                   <i class="fas fa-home nav-icon"></i>
                   <p>Home</p>
                 </a>
@@ -101,7 +101,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./manage.php" class="nav-link active">
+                <a href="./manage.php" class="nav-link">
                   <i class="fas fa-toolbox nav-icon"></i>
                   <p>Products</p>
                 </a>
@@ -129,7 +129,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Add Product</h1>
+            <h1 class="m-0">Service</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -139,76 +139,64 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-     
         <!-- Main row -->
         <div class="row">
+          
+            <div class="ml-2" >
+              <a href='addservice.php'><button type='button' class='btn bg-lightblue ml-0 mb-2'>Add A New Service</button></a>
+            </div>
+          
           <div class="col-12">
-            <div class="card text-center w-50 mx-auto">
+            <div class="card text-center">
               <div class="card-header">
-                <h3 class="card-title">Add Product</h3>
+                <h3 class="card-title">All Services</h3>
 
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-                
-                <?php 
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                    <th> Customer ID</th>
+                    <th> Invoice no</th>
+                    <th> Order date</th>
+                    <th> Order status</th>
+                    
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  <?php
+                  require("../controllers/cart_controller.php");
+                  $orders=orders_controller();
+                  if(!empty($orders)){
+                      foreach($orders as $x){
+                          echo 
+                          "
+                          <tr>
+                              <td>{$x['customer_name']}</td>
+                              <td>{$x['invoice_no']}</td>
+                              <td>{$x['order_date']}</td>
+                              <td>{$x['order_status']}</td>
+                              <td><a style ='color: blue;' href='orderdetails.php?orderID={$x['order_id']}'>View</a></td>
+                          </tr>
+                          ";
+                      }
+                  }
+                  else{
+                      echo 
+                      "
               
-                require_once("../controllers/product_controller.php");
-                
-                $categories = displaycategories_controller();
-                $brands =displayBrands_controller();
+                      <tr>
+                      <td>No  orders</td>
+                      
+                    </tr>
+
+                      ";
+                  }
                 ?>
-
-  
-   
-
-        <form method="post" action="../actions/add_product.php" enctype="multipart/form-data" >
-            <div class="form-group">
-            <label>Product Name</label>
-            <input type="text" class="form-control" id="pname" name="pname">
-            </div>
-            <div class="form-group">
-            <label>Product Price (Ghc)</label>
-            <input type="number" class="form-control" id="pprice" name="pprice">
-            </div>
-            <div class="form-group">
-            <label for="form-pcat">Product Category</label>
-            <select class="form-control" id="form-pcat" name="pcat">
-            <option value="" selected disabled hidden>Choose here</option>
-                <?php
-                foreach($categories as $cat){
-                    echo "<option value=".$cat['cat_id'].">".$cat['cat_name']."</options>";
-                }
-            ?>
-            </select>
-            </div>
-            <div class="form-group">
-            <label for="pbrand">Product Brand</label>
-            <select class="form-control" id="pbrand" name="pbrand">
-            <option value="" selected disabled hidden>Choose here</option>
-                <?php
-                foreach($brands as $brand){
-                    echo "<option value=".$brand['brand_id']."> ".$brand['brand_name']."</options>";
-                }
-            ?>
-            </select>
-            </div>
-            <div class="form-group">
-            <label for="pdesc">Product Description</label>
-            <textarea class="form-control" id="pdesc" rows="3" name="pdesc"></textarea>
-            </div>
-            <div class="form-group">
-            <label for="pimg">Product Image</label>
-            <input type="file" class="form-control-file" id="pimg" name="img">
-            </div>
-            <div class="form-group">
-            <label>Product Keyword</label>
-            <input type="text" class="form-control" id="pkeyword" name="pkeyword">
-            </div>
-
-            <button type="submit" class="btn btn-primary" name="addproduct">Add Product</button>
-        </form>
-        
+                </table>
               </div>
               <!-- /.card-body -->
             </div>
@@ -223,9 +211,9 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>WriteX.</strong>
+    <strong>Artopia</strong>
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0
+      
     </div>
   </footer>
 
@@ -237,46 +225,31 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="plugins/moment/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
+
 </body>
+<?php
+    if(isset($_SESSION["error_message"])){
+        $message = $_SESSION["error_message"];
+        echo "<script>
+            swal('Error!', '".$message."', 'error');
+            </script>";
+        unset($_SESSION["error_message"]);  
+    } 
+    
+    if(isset($_SESSION["success_message"])){
+        $message = $_SESSION["success_message"];
+        echo "<script>
+            swal('Done!', '".$message."', 'success');
+            </script>";
+        unset($_SESSION["success_message"]);
+      }  
+?>
 </html>
-
-
-
-
-
-
-

@@ -38,7 +38,7 @@ $category = select_one_category_controller($_GET['id']);
 
 	<div class="container">
 
-		<form method="post" action="../actions/category.php">
+		<form method="post" action="../actions/category_process.php">
 			<div class="form-group">
 				<input class="form-control" type="text" placeholder="Category Name" name="name" value="<?php echo $category['cat_name'] ?>" required>
 			</div>
