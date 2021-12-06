@@ -12,8 +12,6 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
- 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 
@@ -22,7 +20,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
- 
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -37,7 +34,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index.html" class="nav-link">Category</a>
+        <a href="index.html" class="nav-link">Home</a>
       </li>
      
     </ul>
@@ -96,13 +93,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./category.php" class="nav-link active">
+                <a href="./category.php" class="nav-link">
                   <i class="fas fa-file-alt nav-icon"></i>
                   <p>Categories</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./brand.php" class="nav-link ">
+                <a href="./brand.php" class="nav-link active">
                   <i class="fas fa-file-alt nav-icon"></i>
                   <p>Brands</p>
                 </a>
@@ -136,7 +133,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Categories</h1>
+            <h1 class="m-0">Brands</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -150,54 +147,52 @@
         <div class="row">
           
             <div class="ml-2" >
-            <button type="button" class="btn btn-primary btn-round"  data-toggle="modal" data-target="#addcategory">Add new Category</button>
+            <button type="button" class="btn btn-primary btn-round"  data-toggle="modal" data-target="#addbrand">Add new Brand</button>
            
             </div>
 
-          <!-- Modal -->
-          <div id="addcategory" class="modal fade" role="dialog">
+
+            <!-- Modal -->
+            <div id="addbrand" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
-          <!-- Modal content-->
-          <div class="modal-content">
-          <div class="modal-header">
-              <h4 class="modal-title">Add Category</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              
-          </div>
-          <div class="modal-body" >
-              <form id="form" method="post" action="../actions/category_process.php">
-                <div class="form-group">
-                  <input class="form-control" type="text" placeholder="Category Name" name="catname" id="catname" required>
+                <!-- Modal content-->
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Brand</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    
+                </div>
+                <div class="modal-body" >
+                    <form id="form" method="post" action="../actions/brand_process.php">
+                      <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Brand Name" name="brandname" id="brandname" required>
+                      </div>
+
+                      <div class="form-submit">
+                        <button type="submit" class="btn btn-primary" name="addbrand" >Add Brand</button>
+                      </div>
+                    </form>
+                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-round" data-dismiss="modal">Close</button>
+                </div>
                 </div>
 
-                <div class="form-submit">
-                 <button type="submit" class="btn btn-primary" name="addcat" id="addcat"> Add Category </button>
-                 <input class="form-control" type="hidden" name="id" value="<?php echo $category['cat_id'] ?>">
-                </div>
-              </form>
-          
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-danger btn-round" data-dismiss="modal">Close</button>
-          </div>
-          </div>
       </div>
-  </div>
+      </div>
           
           <div class="col-12">
             <div class="card text-center">
-              <div class="card-header">
-                
-
-              </div>
+              
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                    <th> Category ID</th>
-                    <th> Category Name</th>
+                    <th> Brand ID</th>
+                    <th> Brand Name</th>
                     <th> </th>
                     <th> </th>
                    
@@ -208,34 +203,36 @@
                   <tbody>
 
                   <?php
-                    require('../controllers/product_controller.php');
-                    $categories = displaycategories_controller();
-                    if(!empty($categories)){
-                        foreach($categories as $x){?>
-                            
-                            <tr>
-                                <td><?=$x['cat_id']?></td>
-                                <td><?=$x['cat_name']?></td>
-                                <td><i class='fa fa-edit'type="button" data-toggle="modal" data-target="#updatecategory"></i>
-                                <div id="updatecategory" class="modal fade" role="dialog">
+                  require('../controllers/product_controller.php');
+                    $brands = displayBrands_controller();
+                     if(!empty($brands)){
+                     foreach($brands as $x){?>
+                    
+                    <tr>
+                        <td><?=$x['brand_id']?></td>
+                        <td><?=$x['brand_name']?></td>
+                        <td><i class='fa fa-edit'type="button" data-toggle="modal" data-target="#updatebrand"></i>
+                        <!-- Modal to update the brand -->
+                      
+                        <div id="updatebrand" class="modal fade" role="dialog">
                             <div class="modal-dialog">
 
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Update Category</h4>
+                                    <h4 class="modal-title">Update Brand</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     
                                 </div>
                                 <div class="modal-body">
                                 <form id="form" method="post" action="../actions/brand_process.php">
                                   <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Category Name" name="name" id="name" value=<?= $x['cat_name']?> >
-                                    <input class="form-control" type="hidden" name="id"  value=<?php $x['cat_id']?> required>
+                                    <input class="form-control" type="text" placeholder="Brand Name" name="name" id="brandname" value=<?= $x['brand_name']?> >
+                                    <input class="form-control" type="hidden" name="id"  value=<?php $x['brand_id']?> required>
                                   </div>
 
                                   <div class="form-submit">
-                                    <button type="submit" class="btn btn-primary" name="updatecat" >Update</button>
+                                    <button type="submit" class="btn btn-primary" name="updatebrand" >Update</button>
                                   </div>
                                 </form>
                                 
@@ -247,22 +244,24 @@
 
                             </div>
                             </div>
-                                                  
-                                </td>
-                                <td><a style= 'color: red' href='../actions/category_process.php?deletecatID=<?=$x['cat_id']?>'><i class='fa fa-trash'></i></a></td>
-                            </tr>
-                            
-                        <?php }
-                    }
-                    else{ ?>
-                      
-                        <tr>
-                        <td>No Category Inserted Yet</td>
-                        
-                         </tr>
-        
-                        
-                   <?php  }?>
+                            </td>
+
+                        <td><a href='../actions/brand_process.php?deleteBrandID=<?= $x['brand_id']?>' style='color:red'><i class='fa fa-trash'></i></a></td>
+                    </tr>
+                  
+               <?php }
+            }
+            else{?>
+                
+                <tr>
+                <td>No brands Inserted Yet</td>
+                
+            	</tr>
+
+              
+           <?php } ?>
+			
+		
                 </table>
               </div>
               <!-- /.card-body -->

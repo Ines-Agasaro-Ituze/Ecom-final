@@ -79,7 +79,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./payments.php" class="nav-link ">
+                <a href="./customizedorders.php" class="nav-link ">
                   <i class="fas fa-wallet nav-icon"></i>
                   <p>Customized Orders</p>
                 </a>
@@ -91,19 +91,19 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./service.php" class="nav-link">
+                <a href="./category.php" class="nav-link">
                   <i class="fas fa-file-alt nav-icon"></i>
                   <p>Categories</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./category.php" class="nav-link ">
+                <a href="./brand.php" class="nav-link ">
                   <i class="fas fa-file-alt nav-icon"></i>
                   <p>Brands</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./manage.php" class="nav-link active">
+                <a href="./products.php" class="nav-link active">
                   <i class="fas fa-toolbox nav-icon"></i>
                   <p>Products</p>
                 </a>

@@ -72,7 +72,11 @@
           </div>
           <div class="form-group">
             <label for="pdesc">Product Description</label>
-            <textarea class="form-control" id="pdesc" rows="3" name="pdesc" value="<?php echo $product['product_desc'] ?>"></textarea>
+            <input class="form-control" id="pdesc" type="text" name="pdesc" value="<?php echo $product['product_desc'] ?>"></input>
+          </div>
+          <div class="form-group">
+            <label for="pdesc">Product Stock</label>
+            <input class="form-control" id="stock" type="number" name="stock" row=3 value="<?php echo $product['stock'] ?>"></input>
           </div>
           <div class="form-group">
             <label for="pimg">Product Image</label>

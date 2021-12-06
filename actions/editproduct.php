@@ -11,6 +11,7 @@ if(isset($_POST['updateproduct'])){
     $pcat = $_POST['pcat'];
     $pbrand = $_POST['pbrand'];
     $pdesc = $_POST['pdesc'];
+    $stock=$_POST['stock'];
     $pkeyword = $_POST['pkeyword'];
     $id=$_POST['id'];
     $productDetails=select_one_product_controller($id);
@@ -34,7 +35,7 @@ if(isset($_POST['updateproduct'])){
             
             if($upload){
                 //insert image file name into database
-                $updateProduct=update_one_product_controller($id,$pcat, $pbrand, $pname, $pprice, $pdesc, $targetFilePath, $pkeyword);
+                $updateProduct=update_one_product_controller($id,$pcat, $pbrand, $pname,$stock, $pprice, $pdesc, $targetFilePath, $pkeyword);
             
 
                 if($updateProduct) {
@@ -50,7 +51,7 @@ if(isset($_POST['updateproduct'])){
         
     }
     else{
-        $updateProduct = update_one_product_controller($id, $pcat, $pbrand, $pname, $pprice, $pdesc, $productDetails['product_image'], $pkeyword);
+        $updateProduct = update_one_product_controller($id, $pcat, $pbrand, $pname, $stock ,$pprice, $pdesc, $productDetails['product_image'], $pkeyword);
 
         if($updateProduct) {
             echo "Update Successful";

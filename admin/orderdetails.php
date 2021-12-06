@@ -47,19 +47,6 @@
     <!-- Sidebar -->
     <div class="sidebar bg-lightblue">
       <!-- Sidebar user panel (optional) -->
-      
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline mt-3">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar bg-light" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -113,10 +100,7 @@
            
           <div class="col-12">
             <div class="card text-center">
-              <div class="card-header">
-                <h3 class="card-title">Order Details</h3>
-
-              </div>
+             
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">

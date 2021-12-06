@@ -38,7 +38,7 @@ class cart extends Connection
     //display cart
     //logged in customers
     public function displayCart($cid){
-        $sql = "SELECT `cart`.`p_id`, `cart`.`c_id`, `cart`.`qty`, `products`.`product_title`, `products`.`product_price`, `products`.`product_image` FROM `cart`
+        $sql = "SELECT `cart`.`p_id`, `cart`.`c_id`, `cart`.`qty`, `products`.`product_title`, `products`.`product_price`, `products`.`product_image`, `products`.`stock` FROM `cart`
         JOIN `products` on (`cart`.`p_id` = `products`.`product_id`)
         WHERE `cart`.`c_id` = '$cid'";
 
@@ -48,7 +48,7 @@ class cart extends Connection
 
     //not logged in customers
     public function displayCartNull($ipadd){
-        $sql = "SELECT `cart`.`p_id`, `cart`.`ip_add`, `cart`.`qty`, `products`.`product_title`, `products`.`product_price`, `products`.`product_image` FROM `cart`
+        $sql = "SELECT `cart`.`p_id`, `cart`.`ip_add`, `cart`.`qty`, `products`.`product_title`, `products`.`product_price`, `products`.`product_image`, `products`.`stock` FROM `cart`
         JOIN `products` on (`cart`.`p_id` = `products`.`product_id`)
         WHERE `cart`.`ip_add` = '$ipadd'";
 
@@ -107,11 +107,39 @@ class cart extends Connection
 
         return $this->fetchOne($sql);
     }
+   
     //function to add to customized orders
-    public function addCustomization($cid, $inv_no, $ord_date, $ord_stat, $file, $desc){
-        $sql = "INSERT INTO `orders`(`customer_id`, `invoice_no`, `order_date`, `order_status`, `order_desc`, `order_file`) VALUES ('$cid','$inv_no','$ord_date','$ord_stat', '$desc', '$file')";
+    public function addCustomization($cid,$pid,$qty, $inv_no, $ord_date, $ord_stat, $file, $desc,$amount){
+        $sql = "INSERT INTO `customizedorders`(`customer_id`, `product_id`, `product_qty`, `order_desc`, `order_file`, `amount`,`invoice_no`, `order_date`, `order_status` ) 
+        VALUES ('$cid', '$pid','$qty', '$desc', '$file','$amount','$inv_no','$ord_date','$ord_stat')";
         return $this->query($sql);
     }
+
+    //function to update customized order status
+    public function updateOrderstatus($ord_id,$ord_stat,$amount){
+        $sql = "UPDATE `customizedorders` SET `order_status`='$ord_stat', `amount`='$amount' WHERE `order_id`='$ord_id'";
+        return $this->query($sql);
+    }
+
+    //function to select to customized orders
+    public function select_customized_orders(){
+        $sql = "select * from customizedorders";
+        return $this->fetch($sql);
+    }
+
+     //function to select one customized order by its order id
+     public function select_one_customized_order($id){
+        $sql = "select * from customizedorders where order_id=$id";
+        return $this->fetchOne($sql);
+    }
+      //function to select customized order of a customer given its status
+      public function customized_orders($cid,$order_stat){
+        $sql = "select * from customizedorders where customer_id=$cid and order_status='$order_stat'";
+        return $this->fetchOne($sql);
+    }
+
+
+
     //function to add to orders
     public function addOrder($cid, $inv_no, $ord_date, $ord_stat){
         $sql = "INSERT INTO `orders`(`customer_id`, `invoice_no`, `order_date`, `order_status`) VALUES ('$cid','$inv_no','$ord_date','$ord_stat')";
@@ -127,6 +155,11 @@ class cart extends Connection
     public function addPayment($amt, $cid, $ord_id, $currency, $pay_date){
         $sql = "INSERT INTO `payment`(`amt`, `customer_id`, `order_id`, `currency`, `payment_date`) VALUES ('$amt','$cid','$ord_id','$currency','$pay_date')";
         return $this->query($sql);
+    }
+    //select all payments
+    public function select_payments(){
+        $sql="select * from payment";
+        return $this->fetch($sql);
     }
     // function to to check a recent order
     public function recentOrder(){

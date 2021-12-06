@@ -33,10 +33,10 @@ function delete_category_controller($id){
     return $product_instance->delete_category($id);
 }
 
-function add_product_controller($cat, $brand, $title,$price,$desc,$image,$keywords){
+function add_product_controller($cat, $brand, $title,$stock,$price,$desc,$image,$keywords){
     // create an instance of the product class
     $product_instance = new Product();
-    return $product_instance->add_product($cat, $brand, $title,$price,$desc,$image,$keywords);
+    return $product_instance->add_product($cat, $brand, $title,$stock,$price,$desc,$image,$keywords);
 }
 
 
@@ -46,10 +46,10 @@ function delete_one_product_controller($id){
     return $product_instance->delete_one_product($id);
 }
 
-function update_one_product_controller($id, $cat, $brand, $title,$price,$desc,$image,$keywords){
+function update_one_product_controller($id, $cat, $brand, $title,$stock,$price,$desc,$image,$keywords){
     // create an instance of the product class
     $product_instance = new Product();
-    return $product_instance->update_one_product($id, $cat, $brand, $title,$price,$desc,$image,$keywords);
+    return $product_instance->update_one_product($id, $cat, $brand, $title,$stock,$price,$desc,$image,$keywords);
 }
 function select_all_products_controller(){
     // create an instance of the product class

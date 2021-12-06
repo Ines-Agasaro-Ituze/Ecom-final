@@ -195,7 +195,11 @@
             </div>
             <div class="form-group">
             <label for="pdesc">Product Description</label>
-            <textarea class="form-control" id="pdesc" rows="3" name="pdesc"></textarea>
+            <input class="form-control" id="pdesc" type="text" name="pdesc"></input>
+            </div>
+            <div class="form-group">
+            <label for="stock">Product Stock</label>
+            <input class="form-control" id="stock" type="number" name="stock"></input>
             </div>
             <div class="form-group">
             <label for="pimg">Product Image</label>

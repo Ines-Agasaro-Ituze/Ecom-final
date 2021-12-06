@@ -107,9 +107,32 @@ require_once("../classes/cart_class.php");
         return $cart->cartValueNull($ipadd);
     }
      //function to add to customized orders
-     function addCustomization_controller($cid, $inv_no, $ord_date, $ord_stat, $file, $desc){
+     function addCustomization_controller($cid,$pid,$qty, $inv_no, $ord_date, $ord_stat, $file, $desc,$amount){
         $cart=new cart();
-        return $cart->addCustomization($cid, $inv_no, $ord_date, $ord_stat, $file, $desc);
+        return $cart->addCustomization($cid,$pid,$qty, $inv_no, $ord_date, $ord_stat, $file, $desc,$amount);
+    }
+
+    //function to update customized order status
+    function updateOrderstatus_controller($ord_id,$ord_stat,$amount){
+        $cart=new cart();
+        return $cart->updateOrderstatus($ord_id,$ord_stat,$amount);
+    }
+    
+     //function to select to customized orders
+    function select_customized_orders_controller(){
+        $cart=new cart();
+        return $cart->select_customized_orders();
+    }
+
+     //function to select one customized order by its order id
+    function select_one_customized_order_controller($id){
+        $cart=new cart();
+        return $cart->select_one_customized_order($id);
+    }
+     //function to select customized order of a customer given its status
+     function customized_orders_controller($cid,$order_stat){
+        $cart=new cart();
+        return $cart->customized_orders($cid,$order_stat);
     }
     //function to add to orders
     function addOrder_controller($cid, $inv_no, $ord_date, $ord_stat){
@@ -126,6 +149,11 @@ require_once("../classes/cart_class.php");
     function addPayment_controller($amt, $cid, $ord_id, $currency, $pay_date){
         $cart= new cart();
         return $cart->addPayment($amt, $cid, $ord_id, $currency, $pay_date);
+    }
+    //select all payments
+    function select_payments_controller(){
+        $cart= new cart();
+        return $cart->select_payments();
     }
 
     function recentOrder_controller(){

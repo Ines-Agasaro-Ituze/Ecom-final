@@ -15,7 +15,7 @@ CURLOPT_TIMEOUT => 30,
 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 CURLOPT_CUSTOMREQUEST => "GET",
 CURLOPT_HTTPHEADER => array(
-    "Authorization: Bearer sk_test_a18906e935815aca4d45955386a21a3cbaddec9a",
+    "Authorization: Bearer sk_test_081e3ec16f7c677634949dea386ca173f756edbc",
     "Cache-Control: no-cache",
 ),
 ));
@@ -35,38 +35,27 @@ if(isset($decodedResponse->data->status) && $decodedResponse->data->status === '
     // get form values
     $email = $_GET['email'];
     $cid=$_SESSION['user_id'];
-    $inv_no=mt_rand(1000,10000);
-    $ord_date=date("Y/m/d");
+    $pay_date=date("Y/m/d");
     $ord_stat='pending';
+    $order_id=$_GET['order_id'];
+    $amount=$_GET['amount'];
 
-
-
-    // insert a new order for the logged in customer
-    $addorder=addOrder_controller($cid, $inv_no, $ord_date, $ord_stat);
-    if($addorder){
-        //look for the most recent orderid that has been added to the order table
-        $recent=recentOrder_controller();
-        
-        // call a function that contains info by the customer's order
-        $cart=displayCart_controller($cid);
-        foreach ($cart as $item ){
-            // insert the order deatails in the order details table
-           addOrderDetails_controller($recent['recent'],$item['p_id'],$item['qty']); 
-        }
-        $amount=cartValue_controller($cid);
-
-        // insert payment details
-        $addPayment=addPayment_controller($amount['Result'],$cid,$recent['recent'],"GHC",$ord_date);
-        if($addPayment){
-            // delete all checked out products from cart from table
-            $delete=deleteWholeCart_controller($cid);
-            if($delete){
-                echo "payment verified successfully and insertion complete";
+    // insert payment details
+    $addPayment=addPayment_controller($amount,$cid,$order_id,"RWF",$pay_date);
+   
+    if($addPayment){
+         // updated the order status
+        $update=updateOrderstatus_controller($ord_id,$order_stat,$amount);
+            if($update){
+                echo "Payment verified successfully";
+                // take client to payment sucessful page
                 
             }
-        }else{
-            echo"payment failed";
-        }
+        
+    }
+    else{
+        // take client to payment unsuccesful page
+        echo"Payment failed";
     }
     
 }else{

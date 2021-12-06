@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
             $_SESSION['user-email']=$email;
             $_SESSION['user_role'] = $result['user_role'];
             if($_SESSION['user_role']==0){
-                header("Location: ../admin/dashboard.php");
+                header("Location: ../admin/index.php");
             }
             else{
                 if(!isset($_SESSION['current_page'])){

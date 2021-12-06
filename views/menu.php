@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php session_start();
+    <?php 
     // require_once('../controllers/product_controller.php');
     ?>
     <!--  
@@ -55,6 +55,7 @@
     <!-- Main stylesheet and color file-->
     <link href="../assets/css/style.css" rel="stylesheet">
     <link id="color-scheme" href="../assets/css/colors/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     
     
   </head>
@@ -72,6 +73,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ><a  href="./shop.php" >Home</a>
                 <li class= "dropdown"><a  class="dropdown-toggle" href="./shop.php" >Shop</a>
+                
                 <ul class="dropdown-menu">
                 <?php 
                 $categories=displaycategories_controller();
@@ -85,30 +87,29 @@
                 </ul>
                 </li>
 
-                <li><a  href="cart.php" >Cart(<i class="fa-shopping-cart"></i>)</a> </li>
-              <?php
-              if(!isset($_SESSION['user_id'])){
-              ?>
-                <li class="onhover-div mobile-cart"> <div><img src= ""></div></li>
-                <li ><a  href="../login/login.php" >Login</a></li>
-                <li ><a  href="../login/register.php" >Register</a></li>
-                
-                
-              
-             <?php } else {?>
-             <li><a  href="../login/logout.php" >Logout</a></li>
-             <?php if( ($_SESSION['user_role']) == 0){
-               
-               ?>
-                <li ><a  href="../login/login.php" >Categories</a></li>
-                <li ><a  href="../login/register.php" >Brands</a></li>
-                <li ><a  href="../login/login.php" >Products</a></li>
-                
-             
-             <?php }} ?>
+                <li class= "dropdown"><a  class="dropdown-toggle" href="./shop.php" ><i class="fa fa-user" aria-hidden="true"></i> My Account</a>
+                  <ul class="dropdown-menu">
+                                     
+                    <?php if(isset($_SESSION['user_id'])) {
+                            if(($_SESSION['user_role']) == 0){?>
+                              <li ><a  href="../admin/index.php" >Dashboard</a></li>
+                              <li><a href="../login/logout.php">Logout</a></li>
+                              <?php } else{?>
+                                <li><a href="personalized_cart.php"> Your Personalized Orders</a></li>
+                                <li><a href="../login/logout.php">Logout</a></li>
+                                
+                            <?php }
+                            
+                          }else{?>
+                              <li><a href="../login/login.php">Login</a></li>
+                              <li><a href="../login/register.php">register</a></li>
+                           
+                             <?php }?>
+                    </ul>
+                </li>
 
-
-
+                <li><a  href="cart.php" ><i class="fa fa-shopping-cart" style="font-size:20px"></i></a> </li>
+                
           </div>
         </div>
       </nav>

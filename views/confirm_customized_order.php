@@ -35,6 +35,7 @@ include_once('menu.php');
                   <div class="form-group">
                     <label for="name">Amount</label>
                     <input class="form-control" id="amount"  name="amount" value= <?= $_GET['amount'] ?>  required disabled/>
+                    <input type="hidden" id="order_id" name="order_id" value= <?=$_GET['order_id'];?> />
                   </div>
                   
                   <div class="form-group">

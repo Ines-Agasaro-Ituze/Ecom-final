@@ -10,8 +10,16 @@ if(isset($_POST['addcat'])){
     // call the add_brand_controller function: return true or false
     $result = add_category_controller($name);
 
-    if($result === true) echo "Insertion Successful";
-    else echo "Insertion Failed";
+    if($result === true){
+        echo '<script> alert("Category Added succesfully!")
+        window.location.href="Location: ../admin/category.php"
+        </script>';
+    }
+    else{
+        echo '<script> alert("Category Failed!")
+        window.location.href="Location: ../admin/category.php"
+        </script>';
+    };
 
     
 
@@ -27,8 +35,16 @@ if(isset($_GET['deletecatID'])){
     $result = delete_category_controller($id);
     var_dump($result);
 
-    if($result === true) {header("Location: ../admin/add_category.php");}
-    else echo "deletion failed";
+    if($result) {
+        echo '<script> alert("Category succesfully deleted!")
+        window.location.href="Location: ../admin/brand.php"
+        </script>';
+    }
+    else {
+        echo '<script> alert("Category Failed to delete!")
+        window.location.href="Location: ../admin/brand.php"
+        </script>';
+    }
 
 
 }
@@ -43,8 +59,16 @@ if(isset($_POST['updatecat'])){
     // call the update_product_controller function: return true or false
     $result = update_category_controller($id, $name);
 
-    if($result === true){header("Location: ../admin/add_category.php");}
-    else echo "update failed";
+    if($result){
+        echo '<script> alert("Category updated succesfully!")
+        window.location.href="Location: ../admin/brand.php"
+        </script>';
+    }
+    else {
+        echo '<script> alert("Category failed to update!")
+        window.location.href="Location: ../admin/brand.php"
+        </script>';
+    }
 
 }
 

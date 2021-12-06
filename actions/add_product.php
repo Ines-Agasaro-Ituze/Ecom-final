@@ -2,7 +2,7 @@
 require_once("../controllers/product_controller.php");
 
 
-// check if theres a POST variable with the name 'addbrand'
+// check if theres a POST variable with the name 'addproduct'
 if(isset($_POST['addproduct'])){
     //get product info inputs
     $pname = $_POST['pname'];

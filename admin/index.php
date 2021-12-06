@@ -77,7 +77,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./payments.php" class="nav-link ">
+                <a href="./customizedorders.php" class="nav-link ">
                   <i class="fas fa-wallet nav-icon"></i>
                   <p>Customized Orders</p>
                 </a>
@@ -89,19 +89,19 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./service.php" class="nav-link">
+                <a href="./category.php" class="nav-link">
                   <i class="fas fa-file-alt nav-icon"></i>
                   <p>Categories</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./category.php" class="nav-link ">
+                <a href="./brand.php" class="nav-link ">
                   <i class="fas fa-file-alt nav-icon"></i>
                   <p>Brands</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./manage.php" class="nav-link">
+                <a href="./products.php" class="nav-link">
                   <i class="fas fa-toolbox nav-icon"></i>
                   <p>Products</p>
                 </a>
@@ -141,15 +141,11 @@
       <div class="container-fluid">
         <!-- Main row -->
         <div class="row">
-          
-            <div class="ml-2" >
-              <a href='addservice.php'><button type='button' class='btn bg-lightblue ml-0 mb-2'>Add A New Service</button></a>
-            </div>
-          
+
           <div class="col-12">
-            <div class="card text-center">
+           <div class="card text-center">
               <div class="card-header">
-                <h3 class="card-title">All Services</h3>
+                <h3 class="card-title">All Orders</h3>
 
               </div>
               <!-- /.card-header -->
@@ -160,9 +156,7 @@
                     <th> Customer ID</th>
                     <th> Invoice no</th>
                     <th> Order date</th>
-                    <th> Order status</th>
-                    
-                      
+                    <th> Order status</th>  
                     </tr>
                   </thead>
                   <tbody>
@@ -175,7 +169,7 @@
                           echo 
                           "
                           <tr>
-                              <td>{$x['customer_name']}</td>
+                              <td>{$x['customer_id']}</td>
                               <td>{$x['invoice_no']}</td>
                               <td>{$x['order_date']}</td>
                               <td>{$x['order_status']}</td>

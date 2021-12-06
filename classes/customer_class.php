@@ -6,10 +6,10 @@ require('../settings/connection.php');
 class customer extends Connection{
 
 
-	function add_customer($name, $email, $password,$country,$city,$contact,$image,$role){
+	function add_customer($name, $email, $password,$contact,$role){
 		// return true or false
-		return $this->query("insert into customer(customer_name,customer_email, customer_pass,customer_country, customer_city, customer_contact, customer_image, user_role) 
-        values('$name', '$email', '$password','$country','$city','$contact','$image','$role')");
+		return $this->query("insert into customer(customer_name,customer_email, customer_pass, customer_contact,user_role) 
+        values('$name', '$email', '$password','$contact','$role')");
 	}
 
 	function delete_one_customer($id){

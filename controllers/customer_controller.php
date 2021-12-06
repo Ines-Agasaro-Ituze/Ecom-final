@@ -2,11 +2,11 @@
 
 require('../classes/customer_class.php');
 
-function add_customer_controller($name, $email, $password,$country,$city,$contact,$image,$role){
+function add_customer_controller($name, $email, $pass,$contact,$role){
     // create an instance of the customer class
     $customer_instance = new customer();
     // call the method from the class
-    return $customer_instance->add_customer($name, $email, $password,$country,$city,$contact,$image,$role);
+    return $customer_instance->add_customer($name, $email, $pass,$contact,$role);
 
 }
 

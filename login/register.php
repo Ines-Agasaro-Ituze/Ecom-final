@@ -1,76 +1,54 @@
 <?php
 
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	<title>Register</title>
-</head>
-<body>
-
-	<h1>Register</h1>
-
-	<div class="container">
-
-		<form method="post" name="Formregister" onsubmit= "return validateForm()" action="registerprocess.php">
-			<div class="form-group">
-				<label for="name">Full Name</label>
-				<input class="form-control" type="text" placeholder="Full Name" name="name" id="name">
-				<small id="fullNameError"></small>
-			</div>
-
-			<div class="form-group">
-				<label for="email1">Email address</label>
-				<input class="form-control" type="email" placeholder="email" name="email" id="email">
-				<small id="emailError"></small>
-			</div>
-            
-            <div class="form-group">
-				<label for="country">Country</label>
-				<input class="form-control" type="text" placeholder="country" name="country" id="country">
-				<small id="countryError"></small>
-			</div>
-            <div class="form-group">
-				<label for="city">City</label>
-				<input class="form-control" type="text" placeholder="City" name="city" id="city">
-				<small id="cityError"></small>
-			</div>
-            <div class="form-group">
-				<label for="contact">Phone number</label>
-				<input class="form-control" type="number" placeholder="contact" name="contact" id="contact">
-				<small id="contactError"></small>
-			</div>
-            <div class="form-group">
-				<label for="image_uploads"> Choose images to upload (PNG, JPG)</label>
-				<input class="form-control" type="file" placeholder="image" name="image" id="image" accept= ".jpg, .jpeg, .png">
-			</div>
-		
-            <div class="form-group">
-				<label for="pass">Password</label>
-				<input class="form-control" type="password" placeholder="password " name="pass" id="pass">
-				<small id="passwordError"></small>
-			</div>
-            <div class="form-group">
-				<label for="cpass">Confirm Password</label>
-				<input class="form-control" type="password" placeholder="Confirm password" name="cpass" id="cpass">
-				<small id="confirmPasswordError"></small>
-			</div>
-			<button type="submit" id="button" name="register">Register</button>    
-            
-		</form>
-	
-		
-	</div>
-	<!--Javascript-->
-	<!-- <script type="text/javascript" src="../JS/register.js"></script>-->
-		
-
-
-	
-</body>
+require('../controllers/product_controller.php'); 
+include('../views/menu.php');?>
+      <div class="main">
+        <section class="module bg-dark-30" data-background="../assets/images/Landing/background.png">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h1 class="module-title font-alt mb-0">Register</h1>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module">
+          <div class="container">
+            <div class="row-center">
+    
+              <div class="col-sm-5">
+                <h4 class="font-alt">Register</h4>
+                <hr class="divider-w mb-10">
+                <form class="form" method="post" name="Formregister"  action="registerprocess.php">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" id="email" type="text" name="email" placeholder="Email" required/>
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input class="form-control" id="name" type="text" name="name" placeholder="Full Name" required/>
+                  </div>
+                  <div class="form-group">
+				    <label for="contact">Phone number</label>
+				    <input class="form-control" type="number" placeholder="Contact Number" name="contact" id="contact">
+				   
+			    </div>
+                  <div class="form-group">
+                    <label for="pass">Password</label>
+                    <input class="form-control" id="pass" type="password" name="pass" placeholder="Password" required/>
+                  </div>
+                  <div class="form-group">
+                    <label for="cpass">Confirm Password</label>
+                    <input class="form-control" id="cpass" type="password" name="cpass" placeholder="Re-enter Password" required/>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-block btn-round btn-b" type="submit" id="button" name="register">Register</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+    <?php include('../views/footer.php')?>
+  </body>
 </html>

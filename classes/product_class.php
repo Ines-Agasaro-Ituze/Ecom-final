@@ -27,10 +27,10 @@ class Product extends Connection{
 	}
 
 
-	function add_product($cat, $brand, $title,$price,$desc,$image,$keywords){
+	function add_product($cat, $brand, $title,$stock,$price,$desc,$image,$keywords){
 		// return true or false
-		return $this->query("insert into products(product_cat, product_brand, product_title, product_price, product_desc, product_image, product_keywords) 
-        values('$cat', '$brand', '$title','$price','$desc', '$image', '$keywords')");
+		return $this->query("insert into products(product_cat, product_brand, product_title,stock, product_price, product_desc, product_image, product_keywords) 
+        values('$cat', '$brand', '$title','$stock','$price','$desc', '$image', '$keywords')");
 	}
     
 	function delete_one_product($id){
@@ -38,9 +38,9 @@ class Product extends Connection{
 		return $this->query("delete from products where product_id = '$id'");
 	}
 
-	function update_one_product($id, $cat, $brand, $title,$price,$desc,$image,$keywords){
+	function update_one_product($id, $cat, $brand, $title,$stock,$price,$desc,$image,$keywords){
 		// return true or false
-		return $this->query("update products set product_cat='$cat', product_brand='$brand', product_title='$title', product_price='$price', product_desc='$desc', 
+		return $this->query("update products set product_cat='$cat', product_brand='$brand', product_title='$title',stock='$stock' ,product_price='$price', product_desc='$desc', 
         product_image='$image', product_keywords='$keywords' where product_id = '$id'");
 	}
     function select_all_products(){

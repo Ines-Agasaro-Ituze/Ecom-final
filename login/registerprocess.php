@@ -7,9 +7,6 @@ if(isset($_POST['register'])){
     // retrieve the deatils of the customer
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $country= $_POST['country'];
-    $city=$_POST['city'];
-    $image=$_POST['image'];
     $contact=$_POST['contact'];
     $pass=password_hash($_POST["pass"], PASSWORD_DEFAULT);
     $cpass=password_hash($_POST["cpass"], PASSWORD_DEFAULT);
@@ -20,7 +17,7 @@ if(isset($_POST['register'])){
   
 
    if ($_POST['pass']===$_POST['cpass']){
-        $result=add_customer_controller($name, $email, $pass,$country,$city,$contact,$image,$role);
+        $result=add_customer_controller($name, $email, $pass,$contact,$role);
     
         if($result===true){
             echo"<script>alert('User Registration Completed!')</script>";
