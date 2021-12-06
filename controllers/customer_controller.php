@@ -41,6 +41,14 @@ function select_one_customer_controller($email){
     return $customer_instance->select_one_customer($email);
 
 }
+function select_customer_controller($id){
+    // create an instance of the customer class
+    $customer_instance = new customer();
+    // call the method from the class
+    return $customer_instance->select_customer($id);
+
+}
+
 
 
 

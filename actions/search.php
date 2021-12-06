@@ -1,6 +1,6 @@
 <?php
 
-//check if button is clicked
+//check if button 'seaech' is clicked
 if (isset($_GET['search'])){
     $term = $_GET['searchTerm'];
     if(!empty($term)){

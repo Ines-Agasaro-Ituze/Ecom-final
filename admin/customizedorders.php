@@ -45,8 +45,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-lightblue bg-lightblue my-1 mx-1 mb-1 rounded elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link border-bottom-0 mt-3" style="text-align:center;">
-      <img  src="../images/logo.png" width="200px">
+    <a href="index.php" class="brand-link border-bottom-0 mt-3" style="text-align:left;">
+      <img  src="../assets/images/landing/logo.png" width="100px">
     </a>
 
     <!-- Sidebar -->
@@ -171,10 +171,7 @@
                               <td><?=$x['product_id']?></td>
                               <td><?$x['product_qty']?></td>
                               <td><?=$x['order_desc']?></td>
-                              <td>
-                                  <a href=<?=$x['order_file']?> class='btn' download rel='noopener noreferrer' target='_blank'>
-                                  <i class='fa fa-download'> </i>
-                                  </a>
+                              <td class='hidden-xs'><img src=<?= $x['order_file']?> width='60' height='50'  /></td>
                               </td>
                               <td><?=$x['invoice_no']?></td>
                               <td ><?=$x['order_date']?></td>
@@ -188,7 +185,7 @@
                               <?php }else{?>
 
                                 
-                            <td><a type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">confirm order</a></td>
+                            <td><a href=""  data-toggle="modal" data-target="#myModal">confirm order</a></td>
 
                             <!-- Modal -->
                             <div id="myModal" class="modal fade" role="dialog">
@@ -205,7 +202,7 @@
                                 <form method="post" action="../actions/confirm_order.php" >
                                         <div class="form-group">
                                         <label>Set price per product</label>
-                                        <input type="number" class="form-control" id="price" name="price">
+                                        <input type="number" class="form-control" id="price" name="price" >
                                         </div>
                                         <div class="form-group">
                                     
@@ -215,7 +212,7 @@
                                         </div>
                                     
                                         <button type="submit" class="btn btn-primary" name="confirm" >Confirm</button>
-                                    </form> 
+                              </form> 
                                 
                                 </div>
                                 <div class="modal-footer">

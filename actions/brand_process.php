@@ -31,7 +31,7 @@ if(isset($_POST['addbrand'])){
 if(isset($_GET['deleteBrandID'])){
     $id = $_GET['deleteBrandID'];
 
-    // call the function
+    // call the function to delete a brand
     $result = delete_brand_controller($id);
     
     if($result){

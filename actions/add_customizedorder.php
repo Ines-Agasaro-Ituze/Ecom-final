@@ -1,7 +1,7 @@
 <?php
 
 require_once('../controllers/cart_controller.php');
-//require_once('../controllers/product_controller.php');
+
 session_start();
 
 //check if user logged in 
@@ -21,21 +21,22 @@ if(isset($_POST['order'])){
     $desc=$_POST['desc'];
     $qty=$_POST['qty'];
     $price=$_POST['price'];
-    $amount=$price*$qty;
+    
 
-    //file upload path
+    //file upload path 
     $targetDir="../customized_orders/";
     $fileName=basename($_FILES['file']['name']);
     $targetFilePath=$targetDir.$fileName;
     $fileType=strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
     $tempname=$_FILES['file']['tmp_name'];
 
-    var_dump($cid,$pid,$qty, $inv_no, $ord_date, $ord_stat,$targetFilePath, $desc,$amount);
 
+    // upload image inserted by the user
     $upload=move_uploaded_file($tempname,$targetFilePath);
 
     if($upload){
-        $order= addCustomization_controller($cid,$pid,$qty, $inv_no, $ord_date, $ord_stat, $targetFilePath, $desc,$amount);
+        // adding order to the customized order table
+        $order= addCustomization_controller($cid,$pid,$qty, $inv_no, $ord_date, $ord_stat, $targetFilePath, $desc,$price);
         if($order){
             echo '<script> alert("You have placed your customized order succesfully!")
             window.location.href="Location: ../views/personalized_cart.php"

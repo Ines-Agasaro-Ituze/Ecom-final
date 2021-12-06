@@ -48,27 +48,14 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-lightblue bg-lightblue my-1 mx-1 mb-1 rounded elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link border-bottom-0 mt-3" style="text-align:center;">
-      <img  src="../images/logo.png" width="200px">
+    <a href="index.php" class="brand-link border-bottom-0 mt-3" style="text-align:left;">
+      <img  src="../assets/images/landing/logo.png" width="100px">
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar bg-lightblue">
       <!-- Sidebar user panel (optional) -->
       
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline mt-3">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar bg-light" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -183,83 +170,80 @@
           </div>
           </div>
       </div>
-  </div>
+    </div>
+    
+    <div class="col-12">
+      <div class="card text-center">
+        <div class="card-header">
           
-          <div class="col-12">
-            <div class="card text-center">
-              <div class="card-header">
+
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+          <table class="table table-hover text-nowrap">
+            <thead>
+              <tr>
+              <th> Category ID</th>
+              <th> Category Name</th>
+              <th> </th>
+              <th> </th>
+              
+              
                 
+              </tr>
+            </thead>
+            <tbody>
 
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                    <th> Category ID</th>
-                    <th> Category Name</th>
-                    <th> </th>
-                    <th> </th>
-                   
-                    
+            <?php
+              require('../controllers/product_controller.php');
+              $categories = displaycategories_controller();
+              if(!empty($categories)){
+                foreach($categories as $x){?>
+                      <tr>
+                        <td><?=$x['cat_id']?></td>
+                        <td><?=$x['cat_name']?></td>
+                        <td><i class='fa fa-edit'type="button" data-toggle="modal" data-target="#updatecategory"></i></td>
+                     
+                        <div id="updatecategory" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                              <h4 class="modal-title">Update Category</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              
+                          </div>
+                        <div class="modal-body">
+                          <form id="form" method="post" action="../actions/brand_process.php">
+                            <div class="form-group">
+                              <input class="form-control" type="text" placeholder="Category Name" name="name" id="name" value=<?= $x['cat_name']?> >
+                              <input class="form-control" type="hidden" name="id"  value=<?php $x['cat_id']?> required>
+                            </div>
+                            <div class="form-submit">
+                              <button type="submit" class="btn btn-primary" name="updatecat" >Update</button>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-round" data-dismiss="modal">Close</button>
+                        </div>
+
+                        </div>
+                      </div>
+                    </div>                  
+                        
+                        <td><a style= 'color: red' href='../actions/category_process.php?deletecatID=<?=$x['cat_id']?>'><i class='fa fa-trash'></i></a></td>
+                      </tr>
                       
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                  <?php
-                    require('../controllers/product_controller.php');
-                    $categories = displaycategories_controller();
-                    if(!empty($categories)){
-                        foreach($categories as $x){?>
-                            
-                            <tr>
-                                <td><?=$x['cat_id']?></td>
-                                <td><?=$x['cat_name']?></td>
-                                <td><i class='fa fa-edit'type="button" data-toggle="modal" data-target="#updatecategory"></i>
-                                <div id="updatecategory" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
-
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Update Category</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    
-                                </div>
-                                <div class="modal-body">
-                                <form id="form" method="post" action="../actions/brand_process.php">
-                                  <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Category Name" name="name" id="name" value=<?= $x['cat_name']?> >
-                                    <input class="form-control" type="hidden" name="id"  value=<?php $x['cat_id']?> required>
-                                  </div>
-
-                                  <div class="form-submit">
-                                    <button type="submit" class="btn btn-primary" name="updatecat" >Update</button>
-                                  </div>
-                                </form>
-                                
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger btn-round" data-dismiss="modal">Close</button>
-                                </div>
-                                </div>
-
-                            </div>
-                            </div>
-                                                  
-                                </td>
-                                <td><a style= 'color: red' href='../actions/category_process.php?deletecatID=<?=$x['cat_id']?>'><i class='fa fa-trash'></i></a></td>
-                            </tr>
-                            
-                        <?php }
+                  <?php }
                     }
                     else{ ?>
                       
                         <tr>
                         <td>No Category Inserted Yet</td>
                         
-                         </tr>
+                   </tr>
         
                         
                    <?php  }?>

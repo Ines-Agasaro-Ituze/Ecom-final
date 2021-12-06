@@ -45,26 +45,15 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-lightblue bg-lightblue my-1 mx-1 mb-1 rounded elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link border-bottom-0 mt-3" style="text-align:center;">
-      <img  src="../images/logo.png" width="200px">
+    <a href="index.php" class="brand-link border-bottom-0 mt-3" style="text-align:left;">
+      <img  src="../assets/images/landing/logo.png" width="100px">
     </a>
+
 
     <!-- Sidebar -->
     <div class="sidebar bg-lightblue">
       <!-- Sidebar user panel (optional) -->
-      
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline mt-3">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar bg-light" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+    
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">

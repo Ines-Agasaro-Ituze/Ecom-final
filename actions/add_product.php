@@ -29,7 +29,7 @@ if(isset($_POST['addproduct'])){
         
         
         if($upload){
-            //insert image file name into database
+            //insert product in the product table
             $result= add_product_controller($pcat, $pbrand, $pname, $pprice, $pdesc, $targetFilePath, $pkeyword);
         
 

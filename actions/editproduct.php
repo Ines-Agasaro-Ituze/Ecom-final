@@ -3,7 +3,7 @@
 
 require('../controllers/product_controller.php');
 
-// check if theres a POST variable with the name 'updatebrand"
+// check if theres a POST variable with the name 'updateproduct"
 if(isset($_POST['updateproduct'])){
     // retrieve the name from the form submission
     $pname = $_POST['pname'];
@@ -34,7 +34,7 @@ if(isset($_POST['updateproduct'])){
             
             
             if($upload){
-                //insert image file name into database
+                //insert new image file name into database  and other modified items
                 $updateProduct=update_one_product_controller($id,$pcat, $pbrand, $pname,$stock, $pprice, $pdesc, $targetFilePath, $pkeyword);
             
 
@@ -51,6 +51,7 @@ if(isset($_POST['updateproduct'])){
         
     }
     else{
+        // insert old image back to the db and other updates details
         $updateProduct = update_one_product_controller($id, $pcat, $pbrand, $pname, $stock ,$pprice, $pdesc, $productDetails['product_image'], $pkeyword);
 
         if($updateProduct) {

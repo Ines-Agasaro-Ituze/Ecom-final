@@ -43,8 +43,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-lightblue bg-lightblue my-1 mx-1 mb-1 rounded elevation-4">
     <!-- Brand Logo -->
-    <a href="index.php" class="brand-link border-bottom-0 mt-3" style="text-align:center;">
-      <img  src="../images/logo.png" width="200px">
+    <a href="index.php" class="brand-link border-bottom-0 mt-3" style="text-align:left;">
+      <img  src="../assets/images/landing/logo.png" width="100px">
     </a>
 
     <!-- Sidebar -->
@@ -163,9 +163,6 @@
                     <th> Product Name</th>
                     <th> </th>
                     <th> </th>
-                   
-                    
-                      
                     </tr>
                   </thead>
                   <tbody>
@@ -201,14 +198,10 @@
                 ?>
                 </table>
               </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          
+            </div>  
+          </div> 
         </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
     <!-- /.content -->
   </div>

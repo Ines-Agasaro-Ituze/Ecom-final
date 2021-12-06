@@ -44,7 +44,7 @@ if(isset($decodedResponse->data->status) && $decodedResponse->data->status === '
     $addPayment=addPayment_controller($amount,$cid,$order_id,"RWF",$pay_date);
    
     if($addPayment){
-         // updated the order status
+         // updated the order status of the customized order
         $update=updateOrderstatus_controller($ord_id,$order_stat,$amount);
             if($update){
                 echo "Payment verified successfully";

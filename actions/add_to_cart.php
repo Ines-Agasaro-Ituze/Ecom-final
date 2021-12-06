@@ -14,8 +14,9 @@ require("../controllers/cart_controller.php");
 
         $isDuplicate = checkDuplicateNull_controller($pid, $ipadd);
        
-        
+        //check if user has already added a product to the cart
         if (!empty($isDuplicate)){
+            //qty is increased by one if a product was clicked and was already in the cart
             $quantity=$isDuplicate['qty']+1;
             updateCartNull_controller($ipadd, $pid, $quantity);
             
@@ -27,7 +28,7 @@ require("../controllers/cart_controller.php");
         }
         else{
             
-            
+            // add to cart  for a user who is not logged in
             $insertIntoCart = insertProductIntoCartNull_controller($pid,$ipadd,$qty);
             
             if ($insertIntoCart){
@@ -43,6 +44,7 @@ require("../controllers/cart_controller.php");
             }
         }
     }else{
+       //check if user has already added a product to the cart
         $isDuplicate = checkDuplicate_controller($pid, $cid);
         if ($isDuplicate){
 
@@ -54,6 +56,7 @@ require("../controllers/cart_controller.php");
             window.location.href = '../views/shop.php';
             </script>";
         }else{
+            // add product to the cart
             $insertIntoCart = insertProductIntoCart_controller($pid, $ipadd, $cid, $qty);
 
             if ($insertIntoCart){

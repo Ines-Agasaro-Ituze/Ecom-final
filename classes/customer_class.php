@@ -33,6 +33,11 @@ class customer extends Connection{
 		// return associative array or false
 		return $this->fetchOne("select * from customer where customer_email='$email'");
 	}
+	//select customer using their id
+	function select_customer($id){
+		// return associative array or false
+		return $this->fetchOne("select * from customer where customer_id='$id'");
+	}
 
 }
 
