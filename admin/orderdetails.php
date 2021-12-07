@@ -1,4 +1,17 @@
-
+<?php
+session_start();
+//check if a user is logged in
+if(isset($_SESSION['user_id'])){
+  //if user is not admin redirect to home page
+  if($_SESSION['user_role']==1){
+    header("Location:../index.php");
+  }
+}
+else{
+  //login first to access admin page
+  header("Location:../login/login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,14 +51,14 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-lightblue bg-lightblue my-1 mx-1 mb-1 rounded elevation-4">
+  <aside class="main-sidebar sidebar-dark-lighgreen bg-lightgreen my-1 mx-1 mb-1 rounded elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link border-bottom-0 mt-3" style="text-align:left;">
       <img  src="../assets/images/landing/logo.png" width="100px">
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar bg-lightblue">
+    <div class="sidebar bg-lightgreen">
       <!-- Sidebar user panel (optional) -->
 
       <!-- Sidebar Menu -->
@@ -58,13 +71,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="./index.php" class="nav-link">
-                  <i class="fas fa-toolbox nav-icon"></i>
+                  <i class="fas fa-arrow-alt-circle-left nav-icon"></i>
                   <p>Back</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../actions/logout.php" class="nav-link">
-                  <i class="fas fa-logout nav-icon"></i>
+                  <i class="fas fa-sign-out-alt nav-icon"></i>
                   <p>Logout</p>
                 </a>
               </li>

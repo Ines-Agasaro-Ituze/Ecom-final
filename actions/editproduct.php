@@ -39,11 +39,17 @@ if(isset($_POST['updateproduct'])){
             
 
                 if($updateProduct) {
-                    echo "Update Successful";
-                    header("location: ../admin/products.php");
+                    echo "<script>
+                    window.location.href='../admin/products.php';
+                    alert('Update Successful');
+                    </script>";
+                
                 }
                 
-                else echo "Update Failed";
+                else {echo "<script>
+                window.location.href='../admin/products.php';
+                alert('Update Failed');
+                </script>";}
         
             }
         }
@@ -55,11 +61,19 @@ if(isset($_POST['updateproduct'])){
         $updateProduct = update_one_product_controller($id, $pcat, $pbrand, $pname, $stock ,$pprice, $pdesc, $productDetails['product_image'], $pkeyword);
 
         if($updateProduct) {
-            echo "Update Successful";
-            header("location: ../admin/products.php");
+            echo "<script>
+                    window.location.href='../admin/products.php';
+                    alert('Update Successful');
+                    </script>";
+          
         }
         
-        else echo "update Failed";
+        else {
+            echo "<script>
+                    window.location.href='../admin/products.php';
+                    alert('Failed');
+                    </script>";
+        }
     }
 } 
 

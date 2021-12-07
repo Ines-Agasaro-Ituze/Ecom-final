@@ -1,4 +1,17 @@
-
+<?php
+session_start();
+//check if a user is logged in
+if(isset($_SESSION['user_id'])){
+  //if user is not admin redirect to home page
+  if($_SESSION['user_role']==1){
+    header("Location:../index.php");
+  }
+}
+else{
+  //login first to access admin page
+  header("Location:../login/login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,14 +54,14 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-lightblue bg-lightblue my-1 mx-1 mb-1 rounded elevation-4">
+  <aside class="main-sidebar sidebar-dark-lightgreen bg-lightgreen my-1 mx-1 mb-1 rounded elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link border-bottom-0 mt-3" style="text-align:left;">
       <img  src="../assets/images/landing/logo.png" width="100px">
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar bg-lightblue">
+    <div class="sidebar bg-lightgreen">
       <!-- Sidebar user panel (optional) -->
  
       <!-- Sidebar Menu -->
@@ -59,7 +72,7 @@
           <li class="nav-item menu-open">
             
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+            <li class="nav-item">
                 <a href="./index.php" class="nav-link">
                   <i class="fas fa-home nav-icon"></i>
                   <p>Home</p>
@@ -67,37 +80,37 @@
               </li>
               <li class="nav-item">
                 <a href="./customizedorders.php" class="nav-link ">
-                  <i class="fas fa-wallet nav-icon"></i>
+                  <i class="fas fa-cart-arrow-down nav-icon"></i>
                   <p>Customized Orders</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./payments.php" class="nav-link ">
-                  <i class="fas fa-wallet nav-icon"></i>
+                  <i class="fas fa-money-check-alt nav-icon"></i>
                   <p>Payments</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./category.php" class="nav-link">
-                  <i class="fas fa-file-alt nav-icon"></i>
+                  <i class="fas fa-table nav-icon"></i>
                   <p>Categories</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./brand.php" class="nav-link ">
-                  <i class="fas fa-file-alt nav-icon"></i>
+                  <i class="fas fa-table nav-icon"></i>
                   <p>Brands</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./products.php" class="nav-link active">
-                  <i class="fas fa-toolbox nav-icon"></i>
+                  <i class="fas fa-warehouse nav-icon"></i>
                   <p>Products</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../actions/logout.php" class="nav-link">
-                  <i class="fas fa-logout nav-icon"></i>
+                  <i class="fas fa-sign-out-alt nav-icon"></i>
                   <p>Logout</p>
                 </a>
               </li>
@@ -164,7 +177,7 @@
                             <tr>
                                 <td class='hidden-xs'><img src={$x['product_image']} width='60' height='50' alt='Accessories Pack' /></td>
                                 <td>{$x['product_title']}</td>
-                                <td><a style ='color: blue;' href='updateProduct.php?id={$x['product_id']}'>
+                                <td><a style ='color: blue;' href='update_product.php?id={$x['product_id']}'>
                                 <i class='fa fa-edit'></i></a></td>
                                 <td><a style ='color: red;' href='../actions/editProduct.php?deleteID={$x['product_id']}'><i class='fa fa-trash'></i></a></td>
                             </tr>

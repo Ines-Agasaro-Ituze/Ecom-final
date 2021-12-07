@@ -15,7 +15,7 @@ CURLOPT_TIMEOUT => 30,
 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 CURLOPT_CUSTOMREQUEST => "GET",
 CURLOPT_HTTPHEADER => array(
-    "Authorization: Bearer sk_test_a18906e935815aca4d45955386a21a3cbaddec9a",
+    "Authorization: Bearer sk_test_081e3ec16f7c677634949dea386ca173f756edbc",
     "Cache-Control: no-cache",
 ),
 ));

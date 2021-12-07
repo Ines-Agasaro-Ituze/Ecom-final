@@ -39,16 +39,5 @@ function check_error(){
 	}
 }
 
-function create_menu(){
-	if(isset($_SESSION['user_id'])){
-        echo'<li>
-            <a style="font-size: 1.5rem; text-allign: right" href="login/logout.php">Logout</a>
-            </li>';
-    }
-	else{
-		echo'<li><a style="font-size: 1.5rem;" href="login/login.php">Login</a></li>
-		<li><a style="font-size: 1.5rem;" href="login/register.php">Register</a></li>';
-	}
-}
 
 ?>

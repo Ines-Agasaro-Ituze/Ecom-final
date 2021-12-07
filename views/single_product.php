@@ -52,10 +52,11 @@ include_once('menu.php');
           </div>
         </div> 
         <div class="row mb-20">
-          <form>
+          <form method="post" action="pay_now.php?price=<?=$price?>">
           <div class="col-sm-4 mb-sm-20">
             <input class="form-control input-lg" type="number" name="qty" value="1" max="40" min="1" required="required"/>
             <input class="form-control input-lg" type="hidden" name="pid" value=<?= $product['product_id']?>/>
+            
           </div>
           <div class="col-sm-8"><button class="btn btn-lg btn-block btn-round btn-b" type="submit" >Buy Now</button></div>
           </form>
