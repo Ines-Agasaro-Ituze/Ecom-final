@@ -58,7 +58,7 @@
             
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.php" class="nav-link active">
+                <a href="./index.php" class="nav-link ">
                   <i class="fas fa-home nav-icon"></i>
                   <p>Home</p>
                 </a>
@@ -70,7 +70,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./payments.php" class="nav-link ">
+                <a href="./payments.php" class="nav-link active">
                   <i class="fas fa-wallet nav-icon"></i>
                   <p>Payments</p>
                 </a>

@@ -156,7 +156,7 @@
                               <td>{$x['invoice_no']}</td>
                               <td>{$x['order_date']}</td>
                               <td>{$x['order_status']}</td>
-                              <td><a style ='color: blue;' href='orderdetails.php?orderID={$x['order_id']}'>View</a></td>
+                              <td><a style ='color: blue;' href='orderdetails.php?orderID={$x['order_id']} '>View</a></td>
                           </tr>
                           ";
                       }

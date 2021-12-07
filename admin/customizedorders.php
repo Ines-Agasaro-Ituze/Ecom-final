@@ -171,7 +171,7 @@
                               <td><?=$x['product_id']?></td>
                               <td><?$x['product_qty']?></td>
                               <td><?=$x['order_desc']?></td>
-                              <td class='hidden-xs'><img src=<?= $x['order_file']?> width='60' height='50'  /></td>
+                              <td  class='hidden-xs'> <a href=<?=$x['order_file']?> target="_blank"><img src=<?= $x['order_file']?> width='60' height='50'/>  </a></td>
                               </td>
                               <td><?=$x['invoice_no']?></td>
                               <td ><?=$x['order_date']?></td>

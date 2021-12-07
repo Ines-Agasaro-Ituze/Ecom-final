@@ -123,7 +123,7 @@ class cart extends Connection
 
     //function to select to customized orders
     public function select_customized_orders(){
-        $sql = "select * from customizedorders";
+        $sql = "select * from customizedorders ORDER BY order_date DESC";
         return $this->fetch($sql);
     }
 
@@ -133,12 +133,10 @@ class cart extends Connection
         return $this->fetchOne($sql);
     }
       //function to select customized order of a customer given its status
-      public function customized_orders($cid,$order_stat){
-        $sql = "select * from customizedorders where customer_id=$cid and order_status='$order_stat'";
-        return $this->fetchOne($sql);
+      public function customized_orders($cid){
+        $sql = "select * from customizedorders where customer_id=$cid  ";
+        return $this->fetch($sql);
     }
-
-
 
     //function to add to orders
     public function addOrder($cid, $inv_no, $ord_date, $ord_stat){
@@ -158,7 +156,7 @@ class cart extends Connection
     }
     //select all payments
     public function select_payments(){
-        $sql="select * from payment";
+        $sql="select * from payment order by payment_date DESC";
         return $this->fetch($sql);
     }
     // function to to check a recent order
@@ -168,8 +166,7 @@ class cart extends Connection
     }
     //function to get all orders in the database
     public function orders(){
-        $sql="SELECT * FROM `orders` inner join customer on orders.customer_id = customer.customer_id";
-        
+        $sql="SELECT * FROM `orders` inner join customer on orders.customer_id = customer.customer_id ORDER BY orders.order_date DESC";
         return $this->fetch($sql);
     }
     //function to delete the cart of a user
@@ -185,7 +182,6 @@ class cart extends Connection
     //function to get orderdetails 
     public function getOrderDetails($order_id){
        $sql= "SELECT * FROM `orderdetails` inner join products on orderdetails.product_id = products.product_id  where orderdetails.order_id= $order_id";
-        // $sql = "SELECT `products`.`product_title`, 	`products`.`product_price`, `orderdetails`.`qty`, `orderdetails`.`qty`*`products`.`product_price` as result FROM `orderdetails` JOIN `products` ON (`orderdetails`.`product_id` = `products`.`product_id`) WHERE `order_id`='$ord_id'";
         return $this->fetch($sql);
     }
 

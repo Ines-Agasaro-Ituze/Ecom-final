@@ -59,11 +59,11 @@ if(isset($_POST['updatebrand'])){
     $result = update_brand_controller($id, $name);
 
     if($result){echo '<script> alert("Brand updated succesfully!")
-        window.location.href="Location: ../admin/brand.php"
+        window.location.href="../admin/brand.php"
         </script>';}
     else {
         echo '<script> alert("Failed to update brand!")
-        window.location.href="Location: ../admin/brand.php"
+        window.location.href="../admin/brand.php"
         </script>';
     }
 

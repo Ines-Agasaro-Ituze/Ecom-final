@@ -112,20 +112,11 @@ include('menu.php');
       
       <!-- pagination -->
       
-  <!-- <div class="pagination">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <ul>
-                <li class="current-page"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-              </ul>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="pagination font-alt"><a href="shop.php#products"><i class="fa fa-angle-left"></i></a><a class="active" href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#"><i class="fa fa-angle-right"></i></a></div>
         </div>
-      </div> -->
+      </div>
     </div>
   </section>
         

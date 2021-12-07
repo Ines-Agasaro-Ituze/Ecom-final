@@ -200,7 +200,7 @@
                     <tr>
                         <td><?=$x['brand_id']?></td>
                         <td><?=$x['brand_name']?></td>
-                        <td><i class='fa fa-edit'type="button" data-toggle="modal" data-target="#updatebrand"></i>
+                        <td><a href="" data-toggle="modal" data-target="#updatebrand"><i class='fa fa-edit' ></a></i>
                         <!-- Modal to update the brand -->
                       
                         <div id="updatebrand" class="modal fade" role="dialog">

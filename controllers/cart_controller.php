@@ -130,10 +130,11 @@ require_once("../classes/cart_class.php");
         return $cart->select_one_customized_order($id);
     }
      //function to select customized order of a customer given its status
-     function customized_orders_controller($cid,$order_stat){
+     function customized_orders_controller($cid){
         $cart=new cart();
-        return $cart->customized_orders($cid,$order_stat);
+        return $cart->customized_orders($cid);
     }
+   
     //function to add to orders
     function addOrder_controller($cid, $inv_no, $ord_date, $ord_stat){
         $cart=new cart();

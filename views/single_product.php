@@ -24,13 +24,11 @@ include_once('menu.php');
       ?>
       <div class="row">
         <div class="col-sm-6 mb-sm-40"><a class="gallery"><img src=<?= $product['product_image']; ?> alt="Single Product Image"/></a>
-          <div class="row" style= "padding-top:5%"> 
-            <div class="col-sm-6">
-              <a class="btn btn-lg btn-block btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>">Add To Cart</a>
+          <div class="row" style= "padding-top:5%; "> 
+            <div  class="cart">
+              <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>">Add To Cart</a>
             </div>
-            <div class="col-sm-6">
-              <a class="btn btn-lg btn-block btn-round btn-b" href="#">Buy Now</a>
-            </div>
+            
           </div>
         </div>
         <div class="col-sm-6">
@@ -52,7 +50,16 @@ include_once('menu.php');
               <p><?= $product['product_desc']; ?></p>
             </div>
           </div>
-        </div>                 
+        </div> 
+        <div class="row mb-20">
+          <form>
+          <div class="col-sm-4 mb-sm-20">
+            <input class="form-control input-lg" type="number" name="qty" value="1" max="40" min="1" required="required"/>
+            <input class="form-control input-lg" type="hidden" name="pid" value=<?= $product['product_id']?>/>
+          </div>
+          <div class="col-sm-8"><button class="btn btn-lg btn-block btn-round btn-b" type="submit" >Buy Now</button></div>
+          </form>
+        </div>                
     </div>   
   </section>
       
@@ -84,6 +91,7 @@ include_once('menu.php');
             <div class="form-group">
               <label  for="file">Capture your order in a picture</label>
               <input class="form-control" id="file" type='file' name="file" />
+              <input class="form-control" id="image" type='hidden' name="image" />
             </div>
           </div>
           <div class="col-sm-12">

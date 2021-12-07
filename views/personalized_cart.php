@@ -25,44 +25,65 @@ include('menu.php');
               <th class="hidden-xs">Quantity</th>
               <th>Total Amount</th>
               <th>Status</th>
+              <th></th>
             </tr>
             <?php
               // getting the details of the cart
-              $order_stat="confirmed";
+              
               $cid = $_SESSION['user_id'];
-              $order = customized_orders_controller($cid,$order_stat);           
-              if(!empty($order)){
-                $product=select_one_product_controller($order['product_id']);
-            ?> 
-                        
-            <tr>        
-              <td class="hidden-xs"><a href="single_product.php"><img src=<?= $product['product_image'];?> alt="Accessories Pack"/></a></td>
-              <td>
-                <h5 class="product-title font-alt"><?=$product['product_title'];?></h5>
-              </td>
-              <td class="hidden-xs">
-                <h5 class="product-title font-alt"><?=$order['product_qty'];?></h5>
-              </td>
-              <td class="hidden-xs">
-                <h5 class="product-title font-alt"><?=$order['amount'];?></h5>
-              </td>
-              <td class="hidden-xs">
-                <h5 class="product-title font-alt" style="color:green"><?=$order['order_status'];?></h5>
-              </td>
-            </tr>
-            <?php } ?>
+              $orders = customized_orders_controller($cid);           
+              if(!empty($orders)){
+                foreach($orders as $order){
+                  $product=select_one_product_controller($order['product_id']);
+                  if($order['order_status']=="confirmed"){?>  
+                  <tr>        
+                    <td class="hidden-xs"><a href="single_product.php"><img src=<?= $product['product_image'];?> alt="Accessories Pack"/></a></td>
+                    <td>
+                      <h5 class="product-title font-alt"><?=$product['product_title'];?></h5>
+                    </td>
+                    <td class="hidden-xs">
+                      <h5 class="product-title font-alt"><?=$order['product_qty'];?></h5>
+                    </td>
+                    <td class="hidden-xs">
+                      <h5 class="product-title font-alt"><?=$order['amount'];?></h5>
+                    </td>
+                    <td class="hidden-xs">
+                      <h5 class="product-title font-alt" style="color:green"><?=$order['order_status'];?></h5>
+                    </td>
+                    <td><a class="btn btn-lg btn-block btn-round btn-d" href="<?php echo 'confirm_customized_order.php?order_id='.$order['order_id'].'&amount= '.$order['amount']; ?>" type="submit" name="checkout" >Proceed to Checkout</a></td>
+                  </tr>
+                  <?php }if($order['order_status']=="unconfirmed"){?>
+                    <tr>        
+                    <td class="hidden-xs"><a href="single_product.php"><img src=<?= $product['product_image'];?> alt="Accessories Pack"/></a></td>
+                    <td>
+                      <h5 class="product-title font-alt"><?=$product['product_title'];?></h5>
+                    </td>
+                    <td class="hidden-xs">
+                      <h5 class="product-title font-alt"><?=$order['product_qty'];?></h5>
+                    </td>
+                    <td class="hidden-xs">
+                      <h5 class="product-title font-alt"><?=$order['amount'];?></h5>
+                    </td>
+                    <td class="hidden-xs">
+                      <h5 class="product-title font-alt" >your order is being Processed</h5>
+                    </td>
+            
+                  </tr>
+               <?php }
+                    }}?>
+                      
                                             
                   </tbody>
           </table>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-sm-3 ">
           <div class="form-group">
             <a class="btn btn-lg btn-block btn-round btn-d" href="<?php echo 'confirm_customized_order.php?order_id='.$order['order_id'].'&amount= '.$order['amount']; ?>" type="submit" name="checkout" >Proceed to Checkout</a>
           </div>
         </div>
-      </div>
+      </div> -->
       </div>
     </section>
   </div>

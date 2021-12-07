@@ -12,12 +12,12 @@ if(isset($_POST['addcat'])){
 
     if($result === true){
         echo '<script> alert("Category Added succesfully!")
-        window.location.href="Location: ../admin/category.php"
+        window.location.href="../admin/category.php"
         </script>';
     }
     else{
         echo '<script> alert("Category Failed!")
-        window.location.href="Location: ../admin/category.php"
+        window.location.href="../admin/category.php"
         </script>';
     };
 
@@ -37,12 +37,12 @@ if(isset($_GET['deletecatID'])){
 
     if($result) {
         echo '<script> alert("Category succesfully deleted!")
-        window.location.href="Location: ../admin/brand.php"
+        window.location.href="../admin/brand.php"
         </script>';
     }
     else {
         echo '<script> alert("Category Failed to delete!")
-        window.location.href="Location: ../admin/brand.php"
+        window.location.href="../admin/brand.php"
         </script>';
     }
 

@@ -202,7 +202,7 @@
                       <tr>
                         <td><?=$x['cat_id']?></td>
                         <td><?=$x['cat_name']?></td>
-                        <td><i class='fa fa-edit'type="button" data-toggle="modal" data-target="#updatecategory"></i></td>
+                        <td><a href="" data-toggle="modal" data-target="#updatecategory"><i class='fa fa-edit' ></i></a></td>
                      
                         <div id="updatecategory" class="modal fade" role="dialog">
                           <div class="modal-dialog">

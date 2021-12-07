@@ -17,12 +17,28 @@ if(isset($_POST['order'])){
     $email=$_SESSION['user-email'];
     $inv_no=mt_rand(1000,10000);
     $ord_date=date("Y/m/d");
-    $ord_stat='uncompleted';
+    $ord_stat='unconfirmed';
     $desc=$_POST['desc'];
     $qty=$_POST['qty'];
     $price=$_POST['price'];
+    $existingimage=$_POST['image'];
     
-
+    if($_FILES['file']['name']==""){
+        $order= addCustomization_controller($cid,$pid,$qty, $inv_no, $ord_date, $ord_stat, $existingimage, $desc,$price);
+        if($order){
+            echo '<script type="text/javascript"> 
+            alert("You have placed your customized order succesfully!");
+            window.location.href="../views/personalized_cart.php";
+            </script>';
+        }
+        else{
+            echo '<script type="text/javascript"> 
+            alert("Something went wrong could not place your order!");
+            window.location.href="../views/single_product.php?id=$pid";
+            </script>';
+        }
+    }
+    else{
     //file upload path 
     $targetDir="../customized_orders/";
     $fileName=basename($_FILES['file']['name']);
@@ -39,15 +55,17 @@ if(isset($_POST['order'])){
         $order= addCustomization_controller($cid,$pid,$qty, $inv_no, $ord_date, $ord_stat, $targetFilePath, $desc,$price);
         if($order){
             echo '<script> alert("You have placed your customized order succesfully!")
-            window.location.href="Location: ../views/personalized_cart.php"
+            window.location.href="../views/personalized_cart.php"
             </script>';
         }
         else{
             echo '<script> alert("Something went wrong could not place your order!")
-            window.location.href="Location: ../views/single_product.php?id=$pid"
+            window.location.href="../views/single_product.php?id=$pid"
             </script>';
         }
     }
+}
+    
     
 
     
