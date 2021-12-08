@@ -37,12 +37,12 @@ if(isset($_GET['deletecatID'])){
 
     if($result) {
         echo '<script> alert("Category succesfully deleted!")
-        window.location.href="../admin/brand.php"
+        window.location.href="../admin/category.php"
         </script>';
     }
     else {
         echo '<script> alert("Category Failed to delete!")
-        window.location.href="../admin/brand.php"
+        window.location.href="../admin/category.php"
         </script>';
     }
 
@@ -53,20 +53,20 @@ if(isset($_GET['deletecatID'])){
 // Update category
 if(isset($_POST['updatecat'])){
     // retrieve the name from the form submission
-    $name = $_POST['name'];
-    $id = $_POST['id'];
+    $name = $_POST['catname'];
+    $id = $_POST['catid'];
 
     // call the update_product_controller function: return true or false
     $result = update_category_controller($id, $name);
 
     if($result){
         echo '<script> alert("Category updated succesfully!")
-        window.location.href="Location: ../admin/brand.php"
+        window.location.href="../admin/category.php"
         </script>';
     }
     else {
         echo '<script> alert("Category failed to update!")
-        window.location.href="Location: ../admin/brand.php"
+        window.location.href="../admin/category.php"
         </script>';
     }
 

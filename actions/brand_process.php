@@ -52,8 +52,8 @@ if(isset($_GET['deleteBrandID'])){
 // Update Brand
 if(isset($_POST['updatebrand'])){
     // retrieve the name from the form submission
-    $name = $_POST['name'];
-    $id = $_POST['id'];
+    $name = $_POST['brandname'];
+    $id = $_POST['brandid'];
 
     // call the update_product_controller function: return true or false
     $result = update_brand_controller($id, $name);

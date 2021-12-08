@@ -215,36 +215,7 @@ else{
                       <tr>
                         <td><?=$x['cat_id']?></td>
                         <td><?=$x['cat_name']?></td>
-                        <td><a href="" data-toggle="modal" data-target="#updatecategory"><i class='fa fa-edit' ></i></a></td>
-                     
-                        <div id="updatecategory" class="modal fade" role="dialog">
-                          <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                              <h4 class="modal-title">Update Category</h4>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              
-                          </div>
-                        <div class="modal-body">
-                          <form id="form" method="post" action="../actions/brand_process.php">
-                            <div class="form-group">
-                              <input class="form-control" type="text" placeholder="Category Name" name="name" id="name" value=<?= $x['cat_name']?> >
-                              <input class="form-control" type="hidden" name="id"  value=<?php $x['cat_id']?> required>
-                            </div>
-                            <div class="form-submit">
-                              <button type="submit" class="btn btn-primary" name="updatecat" >Update</button>
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger btn-round" data-dismiss="modal">Close</button>
-                        </div>
-
-                        </div>
-                      </div>
-                    </div>                  
+                        <td><button type='button' name='edit' class='fas fa-edit  mr-1 editbtn'></button></td>               
                         
                         <td><a style= 'color: red' href='../actions/category_process.php?deletecatID=<?=$x['cat_id']?>'><i class='fa fa-trash'></i></a></td>
                       </tr>
@@ -274,6 +245,60 @@ else{
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <!-- Modal to update the brand -->
+                      
+  <div id="updatecat" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Update category</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+        </div>
+        <div class="modal-body">
+        <form id="form" method="post" action="../actions/category_process.php">
+            <div class="form-group">
+            <input class="form-control" type="text" placeholder="Category name" name="catname" id="catname"  >
+            <input class="form-control" type="hidden" name="catid" id="catid" required>
+            </div>
+
+            <div class="form-submit">
+            <button type="submit" class="btn btn-primary" name="updatecat" >Update</button>
+            </div>
+        </form>
+        
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-round" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+
+    </div>
+    </div>
+ <!-- JQUERY to trigger when update button is clicked -->
+    <script>
+
+    $(document).ready(function(){
+        $('.editbtn').on('click',function(){
+            $('#updatecat').modal('show');
+
+            $tr = $(this).closest('tr');
+            var data = $tr.children('td').map(function(){
+                return $(this).text();
+            }).get();
+
+            
+            $('input[name="catid"]').val(data[0]);
+            $('input[name="catname"]').val(data[1]);
+            
+
+        });
+    });
+
+    </script>
   <footer class="main-footer">
     <strong>Artopia</strong>
     <div class="float-right d-none d-sm-inline-block">

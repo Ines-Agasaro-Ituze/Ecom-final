@@ -6,7 +6,12 @@ session_start();
 
 //check if user logged in 
 if (!isset($_SESSION['user_id'])){
-    header("location: ../login/login.php");
+    
+    if(isset($_POST['order'])){
+        $_SESSION['qty']=$_POST['qty'];
+        $_SESSION['desc']=$_POST['desc'];
+        header("location: ../login/login.php");
+    }
 }
 
 // check if theres a POST variable with the name 'order'

@@ -213,40 +213,7 @@ else{
                     <tr>
                         <td><?=$x['brand_id']?></td>
                         <td><?=$x['brand_name']?></td>
-                        <td><a href="" data-toggle="modal" data-target="#updatebrand"><i class='fa fa-edit' ></a></i>
-                        <!-- Modal to update the brand -->
-                      
-                        <div id="updatebrand" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
-
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Update Brand</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    
-                                </div>
-                                <div class="modal-body">
-                                <form id="form" method="post" action="../actions/brand_process.php">
-                                  <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Brand Name" name="name" id="brandname" value=<?= $x['brand_name']?> >
-                                    <input class="form-control" type="hidden" name="id"  value=<?php $x['brand_id']?> required>
-                                  </div>
-
-                                  <div class="form-submit">
-                                    <button type="submit" class="btn btn-primary" name="updatebrand" >Update</button>
-                                  </div>
-                                </form>
-                                
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger btn-round" data-dismiss="modal">Close</button>
-                                </div>
-                                </div>
-
-                            </div>
-                            </div>
-                            </td>
+                        <td><button type='button' name='edit' class='fas fa-edit  mr-1 editbtn'></button></td>
 
                         <td><a href='../actions/brand_process.php?deleteBrandID=<?= $x['brand_id']?>' style='color:red'><i class='fa fa-trash'></i></a></td>
                     </tr>
@@ -278,6 +245,61 @@ else{
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+  <!-- Modal to update the brand -->
+                      
+  <div id="updatebrand" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Update Brand</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+        </div>
+        <div class="modal-body">
+        <form id="form" method="post" action="../actions/brand_process.php">
+            <div class="form-group">
+            <input class="form-control" type="text" placeholder="Brand Name" name="brandname" id="brandname"  >
+            <input class="form-control" type="hidden" name="brandid" id="brandid" required>
+            </div>
+
+            <div class="form-submit">
+            <button type="submit" class="btn btn-primary" name="updatebrand" >Update</button>
+            </div>
+        </form>
+        
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-round" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+
+    </div>
+    </div>
+
+    <script>
+
+$(document).ready(function(){
+    $('.editbtn').on('click',function(){
+        $('#updatebrand').modal('show');
+
+        $tr = $(this).closest('tr');
+        var data = $tr.children('td').map(function(){
+            return $(this).text();
+        }).get();
+
+        
+        $('input[name="brandid"]').val(data[0]);
+        $('input[name="brandname"]').val(data[1]);
+        
+
+    });
+});
+
+</script>
   <footer class="main-footer">
     <strong>Artopia</strong>
     <div class="float-right d-none d-sm-inline-block">

@@ -2,6 +2,15 @@
 require('../controllers/product_controller.php');
 require('../controllers/cart_controller.php');
 session_start();
+if(!isset($_SESSION['user_id'])){
+  $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
+  //initialize session variable to store info of personalized order of a user, to be used if they are not logged in
+  $_SESSION['qty']="";
+  $_SESSION['desc']="";
+  
+ 
+}
+
 include_once('menu.php');
 ?>
 <div class="main">
@@ -76,15 +85,15 @@ include_once('menu.php');
           <div class="col-sm-4">
             <div class="form-group">
               <label  for="name">Quantity *</label>
-              <input class="form-control" id="qty" type="number" min=1 name="qty" placeholder="" required/>
-              <input class="form-control" id="price" type="hidden" name="price" value=<?= $product['product_price'] ?> />
+              <input class="form-control" id="qty" type="number" min=1 name="qty" placeholder="" value=<?= $_SESSION['qty']?> required/>
+              <input class="form-control" id="price" type="hidden" name="price" value=<?= $product['product_price'] ?>  />
             </div>
           </div>
         
           <div class="col-sm-12">
             <div class="form-group">
               <label  for="desc">Describe how you want to personalize this order. Be it Packaging, color, shape! *</label>
-              <textarea class="form-control" id="desc" name="desc" rows="4" placeholder="Your wish is Our Command" required></textarea>
+              <textarea class="form-control" id="desc" name="desc" rows="4" placeholder="Your wish is Our Command"  required> <?= $_SESSION['desc']?></textarea>
               </div>
           </div>
 
