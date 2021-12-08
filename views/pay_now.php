@@ -33,10 +33,11 @@ include_once('menu.php');
             </div>
             <div class="form-group">
               <label for="name">Amount</label>
-              <?php $amount= $_GET['price'];?>
-              <input class="form-control" type="number" name="amount" id="amount" value= <?= $amount?> disabled/>
-              <input class="form-control input-lg" type="hidden" name="pid" id="pid" value=<?= $_POST['pid']?>/>
-              <input class="form-control input-lg" type="hidden" name="qty" id="qty" value=<?= $_POST['qty']?>/>
+              <?php $price=(int)$_GET['price'];
+              $qty=(int)$_GET['qty'];?>
+              <input class="form-control" type="number" name="amount" id="amount" value= <?= $price*$qty?> disabled/>
+              <input class="form-control input-lg" type="hidden" name="pid" id="pid" value=<?= $_GET['pid']?>/>
+              <input class="form-control input-lg" type="hidden" name="qty" id="qty" value=<?= $_GET['qty']?>/>
               
 
             </div>

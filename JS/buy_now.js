@@ -5,7 +5,7 @@ const paymentForm = document.getElementById('paymentForm');
 	function payWithPaystack() {
 
 		let handler = PaystackPop.setup({
-			key: 'pk_test_34f3623788dfa6a7eeaeaa29c57723978fc3df5e', // Replace with your public key
+			key: 'pk_live_bd5356607a881f3a0d6843b75d3172b74b9675cd', // Replace with your public key
 			email: document.getElementById("email-address").value,
 			amount: document.getElementById("amount").value * 100,
 			currency:'GHS',

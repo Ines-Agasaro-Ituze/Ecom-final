@@ -34,10 +34,16 @@ include_once('menu.php');
       <div class="row">
         <div class="col-sm-6 mb-sm-40"><a class="gallery"><img src=<?= $product['product_image']; ?> alt="Single Product Image"/></a>
           <div class="row" style= "padding-top:5%; "> 
-            <div  class="cart">
-              <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>">Add To Cart</a>
+           <!-- DISPLAY THAT A PRODUCT IS OUT OF STOCK -->
+           <?php if($product['stock'] > 0 ) {?>
+            <div class="cart" style="padding-top:5%">
+              <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a>
             </div>
-            
+            <?php } else{?>
+            <div  class="cart">
+            <a class="btn btn-danger btn-round" href="">Out of Stock</a>
+            </div>
+            <?php } ?>
           </div>
         </div>
         <div class="col-sm-6">
@@ -61,14 +67,19 @@ include_once('menu.php');
           </div>
         </div> 
         <div class="row mb-20">
-          <form method="post" action="pay_now.php?price=<?=$price?>">
+           <!-- only  print buy now when the product is in stock -->
+           <?php if($product['stock'] > 0 ) {?>
+          <form method="get" action="pay_now.php">
           <div class="col-sm-4 mb-sm-20">
             <input class="form-control input-lg" type="number" name="qty" value="1" max="40" min="1" required="required"/>
             <input class="form-control input-lg" type="hidden" name="pid" value=<?= $product['product_id']?>/>
+            <input class="form-control input-lg" type="hidden" name="price" value=<?= $price?>/>
             
           </div>
+         
           <div class="col-sm-8"><button class="btn btn-lg btn-block btn-round btn-b" type="submit" >Buy Now</button></div>
           </form>
+          <?php } ?>
         </div>                
     </div>   
   </section>
@@ -133,9 +144,17 @@ include_once('menu.php');
               <div class="ex-product"><a href="#"><img src=<?= $prod['product_image']?> alt="Derby shoes"/></a>
                 <h4 class="shop-item-title font-alt"><a href="#"><?=$prod['product_title']?></a></h4><?=$prod['product_price']?> RWF
               </div>
-              <div class="cart" style="padding-top:5%">
-                <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a>
-              </div>
+              <!-- DISPLAY THAT A PRODUCT IS OUT OF STOCK -->
+            <?php if($product['stock'] > 0 ) {?>
+            <div class="cart" style="padding-top:5%">
+              <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a>
+            </div>
+            <!-- ADD TO CART -->
+            <?php }else{?>
+            <div class="cart" style="padding-top:5%; color:red">
+                <a class="btn btn-danger btn-round" href="">Out of Stock</a>
+            </div>
+            <?php }?>
             </div>
           </div>
         

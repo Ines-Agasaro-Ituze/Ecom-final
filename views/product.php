@@ -45,9 +45,17 @@ $category=select_one_category_controller($cat);
                 </div>
 
               </div>
+           <!-- DISPLAY THAT A PRODUCT IS OUT OF STOCK -->
+           <?php if($product['stock'] > 0 ) {?>
             <div class="cart" style="padding-top:5%">
-                <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a>
+              <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a>
             </div>
+            <!-- ADD TO CART -->
+            <?php }else{?>
+            <div class="cart" style="padding-top:5%; color:red">
+                <a class="btn btn-danger btn-round" href="">Out of Stock</a>
+            </div>
+            <?php }?>
             <h4 class="shop-item-title font-alt"><a href="single_product.php?id=<?= $id;?>" ><?= $product['product_title']?></a></h4><?= $product['product_price']?>
           </div>
         </div>       

@@ -100,7 +100,7 @@ include('menu.php');
             <!-- ADD TO CART -->
             <?php }else{?>
             <div class="cart" style="padding-top:5%; color:red">
-                <a class="btn btn-danger btn-round" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>">Out of Stock</a>
+                <a class="btn btn-danger btn-round" href="">Out of Stock</a>
             </div>
             <?php }?>
               <h4 class="shop-item-title font-alt"><a href="single_product.php?id=<?= $id;?>" ><?= $product['product_title']?></a></h4> <?= $product['product_price']?>
