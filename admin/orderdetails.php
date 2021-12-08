@@ -70,13 +70,13 @@ else{
             
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.php" class="nav-link">
+                <a href="./index.php" class="nav-link active">
                   <i class="fas fa-arrow-alt-circle-left nav-icon"></i>
                   <p>Back</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../actions/logout.php" class="nav-link">
+                <a href="../login/logout.php" class="nav-link">
                   <i class="fas fa-sign-out-alt nav-icon"></i>
                   <p>Logout</p>
                 </a>

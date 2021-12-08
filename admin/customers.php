@@ -28,9 +28,6 @@ else{
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
@@ -61,6 +58,10 @@ else{
       <img  src="../assets/images/landing/logo.png" width="100px">
     </a>
 
+    <!-- Sidebar -->
+    <div class="sidebar bg-lightgreen">
+  
+
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -69,44 +70,45 @@ else{
           <li class="nav-item menu-open">
             
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.php" class="nav-link active">
+            <li class="nav-item">
+                <a href="./index.php" class="nav-link ">
                   <i class="fas fa-home nav-icon"></i>
                   <p>Home</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./customizedorders.php" class="nav-link ">
-                  <i class="fas fa-wallet nav-icon"></i>
+                  <i class="fas fa-cart-arrow-down nav-icon"></i>
                   <p>Customized Orders</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./payments.php" class="nav-link ">
-                  <i class="fas fa-wallet nav-icon"></i>
+                  <i class="fas fa-money-check-alt nav-icon"></i>
                   <p>Payments</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./category.php" class="nav-link">
-                  <i class="fas fa-file-alt nav-icon"></i>
+                  <i class="fas fa-table nav-icon"></i>
                   <p>Categories</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./brand.php" class="nav-link ">
-                  <i class="fas fa-file-alt nav-icon"></i>
+                  <i class="fas fa-table nav-icon"></i>
                   <p>Brands</p>
                 </a>
               </li>
+              
               <li class="nav-item">
                 <a href="./products.php" class="nav-link">
-                  <i class="fas fa-toolbox nav-icon"></i>
+                  <i class="fas fa-warehouse nav-icon"></i>
                   <p>Products</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./customers.php" class="nav-link">
+                <a href="./customers.php" class="nav-link active">
                   <i class="fas fa-user nav-icon"></i>
                   <p>Customers</p>
                 </a>
@@ -134,7 +136,7 @@ else{
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Orders</h1>
+            <h1 class="m-0">Clients</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -149,50 +151,51 @@ else{
 
           <div class="col-12">
            <div class="card text-center">
-              
+             
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
                     <th> Customer ID</th>
-                    <th> Invoice no</th>
-                    <th> Order date</th>
-                    <th> Order status</th>  
+                    <th> Full Name</th>
+                    <th> Email</th>
+                    <th> Contact</th>
+                    <th> Role</th>  
                     </tr>
                   </thead>
                   <tbody>
 
                   <?php
-                  require_once("../controllers/cart_controller.php");
-                 
-                  $orders=orders_controller();
-                  if(!empty($orders)){
-                      foreach($orders as $x){
-                     ?>
-                         
-                          <tr>
-                            <!-- s -->
-                              <td><button class="cid" data-cname=<?=$x['customer_name'] ?> data-email=<?=$x['customer_email'] ?> data-contact=<?=$x['customer_contact'] ?>> 
-                              <?=$x['customer_id']?> </button></td>
-                              <td><?=$x['invoice_no']?></td>
-                              <td><?=$x['order_date']?></td>
-                              <td><?=$x['order_status']?></td>
-                              <td><a style ='color: blue;' href='orderdetails.php?orderID=<?=$x['order_id']?>'><i class='fas fa-eye'></i></a></td>
-                          </tr>
-                         
-                      <?php }
-                  }
-                  else{ ?>
-                    
-                      <tr>
-                      <td>No  orders</td>
-                      
-                    </tr>
+                  require('../controllers/customer_controller.php');
+                    $customers=select_all_customers_controller();
+                    if(!empty($customers)){
+                        foreach($customers as $customer){
+                            echo 
+                            "
+                            <tr>
+                                <td>{$customer['customer_id']}</td>
+                                <td>{$customer['customer_name']}</td>
+                                <td>{$customer['customer_email']}</td>
+                                <td>{$customer['customer_contact']}</td>
+                                <td>{$customer['user_role']}</td>
+                            </tr>
+                            ";
+                        }
+                    }
+                    else{
+                        echo 
+                        "
 
-                    
-                  <?php }
-                ?>
+                        <tr>
+                        <td>No Customers in the database yet</td>
+                        
+                        </tr>
+
+                        ";
+                    }
+                
+                ?> 
                 </table>
               </div>
               <!-- /.card-body -->
@@ -206,63 +209,6 @@ else{
     </section>
     <!-- /.content -->
   </div>
-   <!-- Modal -->
-   <div class="modal fade" id="custInfo" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Customer Info</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          
-        </div>
-        <div class="modal-body">
-        <form >
-        <div class="form-group">
-            <label>Customer Name</label>
-            <input type="text" class="form-control" id="cname" name="cname" disabled>
-        </div>
-        <div class="form-group">
-            <label>Customer Email</label>
-            <input type="text" class="form-control"  id="email" name="email" disabled>
-        </div>
-        <div class="form-group">
-            <label>Customer Contact</label>
-            <input type="number" class="form-control"  id="contact" name="contact" disabled>
-        </div>
-          
-          
-        
-        </form> 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  <!-- script to show the modal and pass data to the form -->
-  <script>
-
-  $(document).ready(function(){
-      $('.cid').on('click',function(){
-          $('#custInfo').modal('show');
-          var name = $('.cid').data('cname');
-          var email = $('.cid').data('email');
-          var contact = $('.cid').data('contact');
-      
-          $('input[name="cname"]').val(name);
-          $('input[name="email"]').val(email);
-          $('input[name="contact"]').val(contact);
-          
-          
-
-      });
-  });
-
-</script>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <strong>Artopia</strong>
@@ -283,7 +229,8 @@ else{
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
-
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 

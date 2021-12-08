@@ -112,7 +112,13 @@ else{
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../actions/logout.php" class="nav-link">
+                <a href="./customers.php" class="nav-link">
+                  <i class="fas fa-user nav-icon"></i>
+                  <p>Customers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../login/logout.php" class="nav-link">
                   <i class="fas fa-sign-out-alt nav-icon"></i>
                   <p>Logout</p>
                 </a>

@@ -9,17 +9,16 @@ require("../controllers/cart_controller.php");
     $ord_id=$_POST['order_id'];
 
     $update = updateOrderstatus_controller($ord_id,$order_stat,$amount);
+    
 
     if ($update){
-        echo "<script>
-        window.location.href='../admin/customizedorders.php';
-        alert('Order confirmed succesfully);
-        </script>";
+        echo '<script> alert("Order COnfirmed Succesfully")
+        window.location.href="../admin/customizedorders.php"
+        </script>';
     }else{
-        echo "<script>
-        window.location.href='../admin/customizedorders.php';
-        alert('order could not be confirmed');
-        </script>";
+        echo '<script> alert("Failed to confirm order!")
+        window.location.href="../admin/customizedorders.php"
+        </script>';
     }
 
 
