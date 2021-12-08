@@ -173,7 +173,7 @@ else{
                          
                           <tr>
                             <!-- s -->
-                              <td><button class="cid" data-cname=<?=$x['customer_name'] ?> data-email=<?=$x['customer_email'] ?> data-contact=<?=$x['customer_contact'] ?>> 
+                              <td><button class=" btn bg-transparent cid" data-cname=<?=$x['customer_name'] ?> data-email=<?=$x['customer_email'] ?> data-contact=<?=$x['customer_contact'] ?>> 
                               <?=$x['customer_id']?> </button></td>
                               <td><?=$x['invoice_no']?></td>
                               <td><?=$x['order_date']?></td>

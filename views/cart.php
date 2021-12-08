@@ -60,9 +60,11 @@ include('menu.php');
                   onchange="updatecart(this)" onkeyup="updatecart(this)" max=<?=$item['stock']?>>
                 </form>
               </td>
+
               <td class="pr-remove"><a href= <?php echo "../actions/cart_process.php?deleteid=".$item['p_id'] ;?> title="Remove"><i class="fa fa-times"></i></a></td>
               
             </tr>
+            
               
               <?php }?>  
             </tbody>
@@ -88,7 +90,16 @@ include('menu.php');
               'ipadd':j.getAttribute('data-ipadd'),
               'qty':j.value
             
-              }, 
+              },
+              success: function(data){
+              if(data.success == true){ // if true (1)
+                  setTimeout(function(){// wait for 5 secs(2)
+                      location.reload(); // then reload the page.(3)
+                  }, 5000); 
+              }
+            }
+           
+              
           });
         }
       </script>
@@ -106,7 +117,7 @@ include('menu.php');
                 </tr>
                 <tr>
                   <th>Shipping Total :</th>
-                  <td>£2.00</td>
+                  <td></td>
                 </tr>
                 <tr class="shop-Cart-totalprice">
                   <th>Total :</th>

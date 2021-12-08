@@ -33,7 +33,7 @@ if(isset($_GET['deletecatID'])){
 
     // call the function
     $result = delete_category_controller($id);
-    var_dump($result);
+
 
     if($result) {
         echo '<script> alert("Category succesfully deleted!")

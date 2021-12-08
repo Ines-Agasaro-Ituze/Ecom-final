@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2021 at 01:54 PM
+-- Generation Time: Dec 08, 2021 at 04:25 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -37,7 +37,7 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`brand_id`, `brand_name`) VALUES
-(25, 'Artopia'),
+(25, 'Artopip'),
 (26, 'Ikamba');
 
 -- --------------------------------------------------------
@@ -52,14 +52,6 @@ CREATE TABLE `cart` (
   `c_id` int(11) DEFAULT NULL,
   `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`p_id`, `ip_add`, `c_id`, `qty`) VALUES
-(11, '::1', NULL, 2),
-(13, '::1', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -95,11 +87,8 @@ CREATE TABLE `customer` (
   `customer_id` int(11) NOT NULL,
   `customer_name` varchar(100) NOT NULL,
   `customer_email` varchar(50) NOT NULL,
+  `customer_contact` int(11) NOT NULL,
   `customer_pass` varchar(150) NOT NULL,
-  `customer_country` varchar(30) NOT NULL,
-  `customer_city` varchar(30) NOT NULL,
-  `customer_contact` varchar(15) NOT NULL,
-  `customer_image` varchar(100) DEFAULT NULL,
   `user_role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -107,12 +96,32 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`customer_id`, `customer_name`, `customer_email`, `customer_pass`, `customer_country`, `customer_city`, `customer_contact`, `customer_image`, `user_role`) VALUES
-(2, 'ange', 'ange@gmail.com', '$2y$10$TWLGy88q1orXj4ttzXAILe0TUYITzdJ7p/kTJ0BQ6dIenXEl7pNDG', 'Ghana', 'Accra', '64323217', 'Ines 1 PE.JPG', 1),
-(3, 'casey', 'casey@gmail.com', '$2y$10$Hyce0wTR5MBz2MdEeyDRSufhEZxyBAqr28wI4VLjY/t43YhlRvDKy', 'Ghana', 'Accra', '5461320', 'Ines 1 PE.JPG', 1),
-(4, 'admin', 'admin@gmail.com', '$2y$10$pqTNdyETQXaGfptiKVSpquO4ULP3rAQfrEwSiYQPKFATnUCnrkaTq', 'Ghana', 'Accra', '020974563', 'Ines 1 PE.JPG', 0),
-(6, 'Kweku Arthur', 'emmanuel.arthur@ashesi.edu.gh', '$2y$10$YrLFhRsIhDUXnbUsw7Z44OaQSCW0sV2N4CDgqV7mx1lkQUTI6S2Hq', 'Ghana', 'Accra', '020466397', '', 1),
-(8, 'Ines  Agasaro Ituze', 'ines.ituze@ashesi.edu.gh', '$2y$10$F1WLnqe5NvlHXl2u6Sjl3ueFVB56Ee1yhFtW.NlmNmuYFt89cPZYm', 'Ghana', 'Accra', '0591860712', '', 1);
+INSERT INTO `customer` (`customer_id`, `customer_name`, `customer_email`, `customer_contact`, `customer_pass`, `user_role`) VALUES
+(2, 'ange', 'ange@gmail.com', 0, '$2y$10$TWLGy88q1orXj4ttzXAILe0TUYITzdJ7p/kTJ0BQ6dIenXEl7pNDG', 1),
+(3, 'casey', 'casey@gmail.com', 0, '$2y$10$Hyce0wTR5MBz2MdEeyDRSufhEZxyBAqr28wI4VLjY/t43YhlRvDKy', 1),
+(4, 'admin', 'admin@gmail.com', 0, '$2y$10$pqTNdyETQXaGfptiKVSpquO4ULP3rAQfrEwSiYQPKFATnUCnrkaTq', 0),
+(6, 'Kweku Arthur', 'emmanuel.arthur@ashesi.edu.gh', 0, '$2y$10$YrLFhRsIhDUXnbUsw7Z44OaQSCW0sV2N4CDgqV7mx1lkQUTI6S2Hq', 1),
+(8, 'Ines  Agasaro Ituze', 'ines.ituze@ashesi.edu.gh', 0, '$2y$10$F1WLnqe5NvlHXl2u6Sjl3ueFVB56Ee1yhFtW.NlmNmuYFt89cPZYm', 1),
+(11, 'Carole Gasaro', 'carole@gmail.com', 591860712, '$2y$10$o7Lc5H8j8aM0l.p7ioZARedE.L9qxgdFNOv/93bzEAGvbPzQXbiK.', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customizedorders`
+--
+
+CREATE TABLE `customizedorders` (
+  `order_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_qty` int(11) NOT NULL,
+  `order_desc` text NOT NULL,
+  `order_file` varchar(255) NOT NULL,
+  `amount` double NOT NULL,
+  `invoice_no` int(11) NOT NULL,
+  `order_date` date NOT NULL,
+  `order_status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -125,15 +134,6 @@ CREATE TABLE `orderdetails` (
   `product_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `orderdetails`
---
-
-INSERT INTO `orderdetails` (`order_id`, `product_id`, `qty`) VALUES
-(9, 12, 1),
-(9, 11, 1),
-(9, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -148,19 +148,6 @@ CREATE TABLE `orders` (
   `order_date` date NOT NULL,
   `order_status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`order_id`, `customer_id`, `invoice_no`, `order_date`, `order_status`) VALUES
-(1, 2, 1000, '2021-11-10', 'uncompleted'),
-(3, 2, 5575, '2021-11-11', 'unfulfilled'),
-(4, 2, 8749, '2021-11-11', 'unfulfilled'),
-(6, 2, 8848, '2021-11-12', 'unfulfilled'),
-(7, 2, 4383, '2021-11-12', 'unfulfilled'),
-(8, 2, 6407, '2021-11-12', 'unfulfilled'),
-(9, 8, 7119, '2021-11-24', 'unfulfilled');
 
 -- --------------------------------------------------------
 
@@ -177,18 +164,6 @@ CREATE TABLE `payment` (
   `payment_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`pay_id`, `amt`, `customer_id`, `order_id`, `currency`, `payment_date`) VALUES
-(1, 15000, 2, 3, 'GHC', '2021-11-11'),
-(2, 13000, 2, 4, 'GHC', '2021-11-11'),
-(3, 13000, 2, 6, 'GHC', '2021-11-12'),
-(4, 10000, 2, 7, 'GHC', '2021-11-12'),
-(5, 0, 2, 8, 'GHC', '2021-11-12'),
-(6, 23000, 8, 9, 'GHC', '2021-11-24');
-
 -- --------------------------------------------------------
 
 --
@@ -200,6 +175,7 @@ CREATE TABLE `products` (
   `product_cat` int(11) NOT NULL,
   `product_brand` int(11) NOT NULL,
   `product_title` varchar(200) NOT NULL,
+  `stock` int(11) NOT NULL,
   `product_price` double NOT NULL,
   `product_desc` varchar(500) DEFAULT NULL,
   `product_image` varchar(100) DEFAULT NULL,
@@ -210,27 +186,27 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_title`, `product_price`, `product_desc`, `product_image`, `product_keywords`) VALUES
-(11, 12, 25, 'Choco Body Butter', 10000, 'Body butter', '../images/products/Choco-Body-Butter.jpg', 'choco'),
-(12, 15, 25, 'Strawberry Candle', 7000, 'Strawberry candle', '../images/products/Strawberry-Candle.jpg', 'candle'),
-(13, 12, 25, 'Mint Scalp Serum', 6000, 'olola', '../images/products/Mint-Scalp-Serum.jpg', 'serum'),
-(14, 15, 25, 'Honey Massage Oil', 10000, 'massage', '../images/products/Honey-Massage-Oil.jpg', 'massage'),
-(15, 14, 25, 'Espresso Lip Balm', 3000, 'lip balm', '../images/products/Espresso-Lipbalm.jpg', 'lip balm'),
-(16, 12, 25, 'Citrus Hair Butter', 12000, 'Hair Butter', '../images/products/Citrus-Hair-Butter.jpg', 'hair butter'),
-(17, 16, 26, 'Heart Beat Ring', 7000, 'This is minimalist ring is made of sterling silver. It is light, yet durable. \r\n', '../images/products/heartbeat.png', 'minimalist'),
-(18, 16, 26, 'Gate Ring', 8000, 'This minimalist ring is made of sterling silver. The ring size is adjustable, allowing you to wear it on different fingers. \r\n', '../images/products/gate.jpg', 'ring'),
-(19, 16, 26, 'Zirconia Ring', 15000, 'This ring is made of sterling silver and zirconia. Idea for an affordable engagement or promise ring.\r\n', '../images/products/zirconia.jpg', 'zirconia'),
-(20, 16, 26, 'Revolve ring', 25000, 'This ring is made of thick sterling silver sheet revolving around itself.', '../images/products/revolve.jpg', 'ring'),
-(21, 16, 26, 'Mini-Me Ring', 6000, 'This ring is made of a thin ring of sterling silver. It looks best when one wears a number of them as knuckle rings on different fingers. ', '../images/products/mini-me.jpg', 'Mini-Me'),
-(22, 16, 26, 'Loop Ring', 8000, 'This ring is made of a thin whoop of sterling silver which loops around itself. The number of whoops can vary depending on the client’s wishes.', '../images/products/loop.jpg', 'ring'),
-(23, 16, 26, 'Love Ring', 8000, 'This ring is made of a thin string of sterling silver, embellished with a hollow heart shape also made out of sterling silver. \r\n', '../images/products/love.jpg', 'ring'),
-(24, 16, 26, 'Reindeer Ring', 10000, 'This ring is made of sterling silver, with a reindeer horn design in its center', '../images/products/reindeer.jpg', 'ring'),
-(25, 16, 26, 'Bauhaus Ring I', 15000, 'This ring is made of sterling silver. Its design is inspired by the Bauhaus art and design movement ', '../images/products/bauhaus I.jpg', 'ring'),
-(26, 16, 26, 'Bauhaus Ring II', 15000, 'This ring is made of sterling silver. Its design is inspired by the Bauhaus art and design movement\r\n', '../images/products/bauhaus II.png', 'ring'),
-(27, 16, 26, 'Stacklable Ring', 20000, 'This ring is made of many sterling silver bands. The customer may customize the ring to have as many stackable bands as they want.\r\n', '../images/products/stackable.jpg', 'ring'),
-(28, 16, 26, 'Lava Tree Ring', 15000, 'This bold ring is made of a sterling silver band and a large lava rock engulfed in tree branches made of sterling silver wires. ', '../images/products/lava tree.jpg', 'ring'),
-(29, 17, 26, 'Healing Lava Bracelet', 7000, 'This bracelet is made of ring is made of lava beads and an assortment of different bead spacers. The pores in the lava beads are filled with aroma-therapeutic essential oils.\r\n', '../images/products/bracelet.jpg', 'bracelet'),
-(30, 18, 26, 'Healing lava Necklace', 15000, 'This necklace is made of a thin sterling silver chain embellished with a lava bead. This bead is filled with aroma-therapeutic essential oils. \r\n', '../images/products/healing necklace.jpg', 'Necklace');
+INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_title`, `stock`, `product_price`, `product_desc`, `product_image`, `product_keywords`) VALUES
+(11, 12, 25, 'Choco Body Butter', 2, 10000, 'Body butter', '../images/products/Choco-Body-Butter.jpg', 'choco'),
+(12, 15, 25, 'Strawberry Candle', 2, 7000, 'Strawberry candle', '../images/products/Strawberry-Candle.jpg', 'Candle'),
+(13, 12, 25, 'Mint Scalp Serum', 2, 6000, 'olola', '../images/products/Mint-Scalp-Serum.jpg', 'serum'),
+(14, 15, 25, 'Honey Massage Oil', 2, 10000, 'massage', '../images/products/Honey-Massage-Oil.jpg', 'massage'),
+(15, 14, 25, 'Espresso Lip Balm', 2, 3000, 'lip balm', '../images/products/Espresso-Lipbalm.jpg', 'lip balm'),
+(16, 12, 25, 'Citrus Hair Butter', 2, 12000, 'Hair Butter', '../images/products/Citrus-Hair-Butter.jpg', 'hair butter'),
+(17, 16, 26, 'Heart Beat Ring', 2, 7000, 'This is minimalist ring is made of sterling silver. It is light, yet durable. ', '../images/products/heartbeat.png', 'minimalist'),
+(18, 16, 26, 'Gate Ring', 0, 8000, 'This minimalist ring is made of sterling silver. The ring size is adjustable, allowing you to wear it on different fingers. \r\n', '../images/products/gate.jpg', 'ring'),
+(19, 16, 26, 'Zirconia Ring', 0, 15000, 'This ring is made of sterling silver and zirconia. Idea for an affordable engagement or promise ring.\r\n', '../images/products/zirconia.jpg', 'zirconia'),
+(20, 16, 26, 'Revolve ring', 0, 25000, 'This ring is made of thick sterling silver sheet revolving around itself.', '../images/products/revolve.jpg', 'ring'),
+(21, 16, 26, 'Mini-Me Ring', 0, 6000, 'This ring is made of a thin ring of sterling silver. It looks best when one wears a number of them as knuckle rings on different fingers. ', '../images/products/mini-me.jpg', 'Mini-Me'),
+(22, 16, 26, 'Loop Ring', 0, 8000, 'This ring is made of a thin whoop of sterling silver which loops around itself. The number of whoops can vary depending on the client’s wishes.', '../images/products/loop.jpg', 'ring'),
+(23, 16, 26, 'Love Ring', 0, 8000, 'This ring is made of a thin string of sterling silver, embellished with a hollow heart shape also made out of sterling silver. \r\n', '../images/products/love.jpg', 'ring'),
+(24, 16, 26, 'Reindeer Ring', 0, 10000, 'This ring is made of sterling silver, with a reindeer horn design in its center', '../images/products/reindeer.jpg', 'ring'),
+(25, 16, 26, 'Bauhaus Ring I', 0, 15000, 'This ring is made of sterling silver. Its design is inspired by the Bauhaus art and design movement ', '../images/products/bauhausI.jpg', 'ring'),
+(26, 16, 26, 'Bauhaus Ring II', 0, 15000, 'This ring is made of sterling silver. Its design is inspired by the Bauhaus art and design movement\r\n', '../images/products/bauhausII.png', 'ring'),
+(27, 16, 26, 'Stacklable Ring', 0, 20000, 'This ring is made of many sterling silver bands. The customer may customize the ring to have as many stackable bands as they want.\r\n', '../images/products/stackable.jpg', 'ring'),
+(28, 16, 26, 'Lava Tree Ring', 0, 15000, 'This bold ring is made of a sterling silver band and a large lava rock engulfed in tree branches made of sterling silver wires. ', '../images/products/lava_tree.jpg', 'ring'),
+(29, 17, 26, 'Healing Lava Bracelet', 0, 7000, 'This bracelet is made of ring is made of lava beads and an assortment of different bead spacers. The pores in the lava beads are filled with aroma-therapeutic essential oils.\r\n', '../images/products/bracelet.jpg', 'bracelet'),
+(30, 18, 26, 'Healing lava Necklace', 0, 15000, 'This necklace is made of a thin sterling silver chain embellished with a lava bead. This bead is filled with aroma-therapeutic essential oils. \r\n', '../images/products/healing_necklace.jpg', 'Necklace');
 
 --
 -- Indexes for dumped tables
@@ -261,6 +237,14 @@ ALTER TABLE `categories`
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`),
   ADD UNIQUE KEY `customer_email` (`customer_email`);
+
+--
+-- Indexes for table `customizedorders`
+--
+ALTER TABLE `customizedorders`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `customer_id` (`customer_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `orderdetails`
@@ -300,37 +284,43 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `customizedorders`
+--
+ALTER TABLE `customizedorders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables
@@ -342,6 +332,13 @@ ALTER TABLE `products`
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`c_id`) REFERENCES `customer` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `customizedorders`
+--
+ALTER TABLE `customizedorders`
+  ADD CONSTRAINT `customizedorders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
+  ADD CONSTRAINT `customizedorders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 
 --
 -- Constraints for table `orderdetails`

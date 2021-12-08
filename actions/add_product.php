@@ -10,6 +10,7 @@ if(isset($_POST['addproduct'])){
     $pcat = $_POST['pcat'];
     $pbrand = $_POST['pbrand'];
     $pdesc = $_POST['pdesc'];
+    $stock = $_POST['stock'];
     $pkeyword = $_POST['pkeyword'];
     
     //file upload path
@@ -30,7 +31,7 @@ if(isset($_POST['addproduct'])){
         
         if($upload){
             //insert product in the product table
-            $result= add_product_controller($pcat, $pbrand, $pname, $pprice, $pdesc, $targetFilePath, $pkeyword);
+            $result= add_product_controller($pcat, $pbrand, $pname, $stock,$pprice, $pdesc, $targetFilePath, $pkeyword);
         
 
             if($result){

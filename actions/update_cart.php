@@ -11,7 +11,7 @@ if (isset($_SESSION['user_id'])){
     $cid = $_SESSION['user_id'];
     // call function that updates the cart for a logged in user
     $updateCart = updateCart_controller($cid, $pid, $qty);
-  
+    
 }else{
     //call function that updates the cart for user who is not logged in
     $ipadd = getRealIpAddr();
